@@ -1,0 +1,191 @@
+---
+title: "Ändringslogg för Azure PowerShell | Microsoft Docs"
+description: "Det här är en historik över de ändringar som gjorts i den senaste versionen av Azure PowerShell."
+services: azure
+author: sdwheeler
+ms.author: sewhee
+manager: carmonm
+ms.service: azure-resource-manager
+ms.product: azure
+ms.devlang: powershell
+ms.topic: conceptual
+ms.workload: 
+ms.date: 05/18/2017
+ms.openlocfilehash: 5c8fa2a5a8f94cd24b66f42c237749a7b89af3b3
+ms.sourcegitcommit: 226527be7cb647acfe2ea9ab151185053ab3c6db
+ms.translationtype: HT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 06/29/2017
+---
+# <span data-ttu-id="b441f-103">Viktig information</span><span class="sxs-lookup"><span data-stu-id="b441f-103">Release notes</span></span>
+<a id="release-notes" class="xliff"></a>
+
+<span data-ttu-id="b441f-104">Det här är en lista över ändringar som har gjorts i Azure PowerShell i den här versionen.</span><span class="sxs-lookup"><span data-stu-id="b441f-104">This is a list of changes made to Azure PowerShell in this release.</span></span>
+
+## <span data-ttu-id="b441f-105">Version 4.0.0</span><span class="sxs-lookup"><span data-stu-id="b441f-105">Version 4.0.0</span></span>
+<a id="version-400" class="xliff"></a>
+
+* <span data-ttu-id="b441f-106">Den här versionen innehåller större ändringar.</span><span class="sxs-lookup"><span data-stu-id="b441f-106">This release contains breaking changes.</span></span> <span data-ttu-id="b441f-107">Se [migreringsguiden](https://aka.ms/azps-migration-guide) för information om ändringar hur de påverkar befintliga skript.</span><span class="sxs-lookup"><span data-stu-id="b441f-107">Please see [the migration guide](https://aka.ms/azps-migration-guide) for change details and the impact on existing scripts.</span></span>
+* <span data-ttu-id="b441f-108">ApiManagement</span><span class="sxs-lookup"><span data-stu-id="b441f-108">ApiManagement</span></span>
+  - <span data-ttu-id="b441f-109">Stöd har lagts till för att konfigurera externa grupper i New-AzureRmApiManagementGroup.</span><span class="sxs-lookup"><span data-stu-id="b441f-109">Added support for configuring external groups in New-AzureRmApiManagementGroup.</span></span>
+* <span data-ttu-id="b441f-110">Fakturering</span><span class="sxs-lookup"><span data-stu-id="b441f-110">Billing</span></span>
+  - <span data-ttu-id="b441f-111">Ny cmdlet Get-AzureRmBillingPeriod</span><span class="sxs-lookup"><span data-stu-id="b441f-111">New Cmdlet Get-AzureRmBillingPeriod</span></span>
+    + <span data-ttu-id="b441f-112">cmdlet för att hämta azure-faktureringsperioder för prenumerationen.</span><span class="sxs-lookup"><span data-stu-id="b441f-112">cmdlet to retrieve azure billing periods of the subscription.</span></span>
+  - <span data-ttu-id="b441f-113">Uppdaterad cmdlet Get-AzureRmBillingInvoice</span><span class="sxs-lookup"><span data-stu-id="b441f-113">Update Cmdlet Get-AzureRmBillingInvoice</span></span>
+  - <span data-ttu-id="b441f-114">ny egenskap BillingPeriodNames</span><span class="sxs-lookup"><span data-stu-id="b441f-114">new property BillingPeriodNames</span></span>
+  - <span data-ttu-id="b441f-115">utdata i listvyn</span><span class="sxs-lookup"><span data-stu-id="b441f-115">output in list view</span></span>
+* <span data-ttu-id="b441f-116">Compute</span><span class="sxs-lookup"><span data-stu-id="b441f-116">Compute</span></span>
+  - <span data-ttu-id="b441f-117">Uppdaterade cmdletar Set-AzureRmVMAEMExtension och Test-AzureRmVMAEMExtension för att stödja Premium-hanterade diskar</span><span class="sxs-lookup"><span data-stu-id="b441f-117">Updated Set-AzureRmVMAEMExtension and Test-AzureRmVMAEMExtension cmdlets to support Premium managed disks</span></span>
+  - <span data-ttu-id="b441f-118">Krypteringsinställningar för säkerhetskopiering av IaaS-VM:ar och återställning vid fel</span><span class="sxs-lookup"><span data-stu-id="b441f-118">Backup encryption settings for IaaS VMs and restore on failure</span></span>
+  - <span data-ttu-id="b441f-119">Alternativet ChefServiceInterval byter namn till ChefDaemonInterval.</span><span class="sxs-lookup"><span data-stu-id="b441f-119">ChefServiceInterval option is renamed to ChefDaemonInterval now.</span></span> <span data-ttu-id="b441f-120">Den gamla kommer dock fortsätta att fungera.</span><span class="sxs-lookup"><span data-stu-id="b441f-120">Old one will continue to work however.</span></span>
+  - <span data-ttu-id="b441f-121">Duplicerade egenskaper för DataDiskNames och NetworkInterfaceIDs har tagits bort från PS VM-objekt.</span><span class="sxs-lookup"><span data-stu-id="b441f-121">Remove duplicated DataDiskNames and NetworkInterfaceIDs properties from PS VM object.</span></span>
+  - <span data-ttu-id="b441f-122">Parametrarna DataDiskNames och NetworkInterfaceIDs har gjorts valfria i Remove-AzureRmVMDataDisk och Remove-AzureRmVMNetworkInterface.</span><span class="sxs-lookup"><span data-stu-id="b441f-122">Make DataDiskNames and NetworkInterfaceIDs parameters optional in Remove-AzureRmVMDataDisk and Remove-AzureRmVMNetworkInterface, respectively.</span></span>
+  - <span data-ttu-id="b441f-123">Rörledningsproblemet vid Get cmdlets när Get cmdlets returnerar ett listobjekt.</span><span class="sxs-lookup"><span data-stu-id="b441f-123">Fix the piping issue of Get cmdlets when the Get cmdlets return a list object.</span></span>
+  - <span data-ttu-id="b441f-124">Cmdletar som är i konflikt med RDFE-cmdletar har bytt namn.</span><span class="sxs-lookup"><span data-stu-id="b441f-124">Cmdlets that conflicted with RDFE cmdlets have been renamed.</span></span> <span data-ttu-id="b441f-125">Se problemet https://github.com/Azure/azure-powershell/issues/2917 för ytterligare information</span><span class="sxs-lookup"><span data-stu-id="b441f-125">See issue https://github.com/Azure/azure-powershell/issues/2917 for more details</span></span>
+    + <span data-ttu-id="b441f-126">`New-AzureVMSqlServerAutoBackupConfig` har bytt namn till `New-AzureRmVMSqlServerAutoBackupConfig`</span><span class="sxs-lookup"><span data-stu-id="b441f-126">`New-AzureVMSqlServerAutoBackupConfig` has been renamed to `New-AzureRmVMSqlServerAutoBackupConfig`</span></span>
+    + <span data-ttu-id="b441f-127">`New-AzureVMSqlServerAutoPatchingConfig` har bytt namn till `New-AzureRmVMSqlServerAutoPatchingConfig`</span><span class="sxs-lookup"><span data-stu-id="b441f-127">`New-AzureVMSqlServerAutoPatchingConfig` has been renamed to `New-AzureRmVMSqlServerAutoPatchingConfig`</span></span>
+    + <span data-ttu-id="b441f-128">`New-AzureVMSqlServerKeyVaultCredentialConfig` har bytt namn till `New-AzureRmVMSqlServerKeyVaultCredentialConfig`</span><span class="sxs-lookup"><span data-stu-id="b441f-128">`New-AzureVMSqlServerKeyVaultCredentialConfig` has been renamed to `New-AzureRmVMSqlServerKeyVaultCredentialConfig`</span></span>
+* <span data-ttu-id="b441f-129">Förbrukning</span><span class="sxs-lookup"><span data-stu-id="b441f-129">Consumption</span></span>
+  - <span data-ttu-id="b441f-130">Ny cmdlet Get-AzureRmConsumptionUsageDetail</span><span class="sxs-lookup"><span data-stu-id="b441f-130">New Cmdlet Get-AzureRmConsumptionUsageDetail</span></span>
+    + <span data-ttu-id="b441f-131">cmdlet för att användningsinformation för prenumerationen.</span><span class="sxs-lookup"><span data-stu-id="b441f-131">cmdlet to retrieve usage details of the subscription.</span></span>
+* <span data-ttu-id="b441f-132">ContainerRegistry</span><span class="sxs-lookup"><span data-stu-id="b441f-132">ContainerRegistry</span></span>
+  - <span data-ttu-id="b441f-133">Lägg till PowerShell-cmdletar för Azure-behållarregistret</span><span class="sxs-lookup"><span data-stu-id="b441f-133">Add PowerShell cmdlets for Azure Container Registry</span></span>
+    + <span data-ttu-id="b441f-134">New-AzureRmContainerRegistry</span><span class="sxs-lookup"><span data-stu-id="b441f-134">New-AzureRmContainerRegistry</span></span>
+    + <span data-ttu-id="b441f-135">Get-AzureRmContainerRegistry</span><span class="sxs-lookup"><span data-stu-id="b441f-135">Get-AzureRmContainerRegistry</span></span>
+    + <span data-ttu-id="b441f-136">Update-AzureRmContainerRegistry</span><span class="sxs-lookup"><span data-stu-id="b441f-136">Update-AzureRmContainerRegistry</span></span>
+    + <span data-ttu-id="b441f-137">Remove-AzureRmContainerRegistry</span><span class="sxs-lookup"><span data-stu-id="b441f-137">Remove-AzureRmContainerRegistry</span></span>
+    + <span data-ttu-id="b441f-138">Get-AzureRmContainerRegistryCredential</span><span class="sxs-lookup"><span data-stu-id="b441f-138">Get-AzureRmContainerRegistryCredential</span></span>
+    + <span data-ttu-id="b441f-139">Update-AzureRmContainerRegistryCredential</span><span class="sxs-lookup"><span data-stu-id="b441f-139">Update-AzureRmContainerRegistryCredential</span></span>
+    + <span data-ttu-id="b441f-140">Test-AzureRmContainerRegistryNameAvailability</span><span class="sxs-lookup"><span data-stu-id="b441f-140">Test-AzureRmContainerRegistryNameAvailability</span></span>
+* <span data-ttu-id="b441f-141">DataLakeAnalytics</span><span class="sxs-lookup"><span data-stu-id="b441f-141">DataLakeAnalytics</span></span>
+  - <span data-ttu-id="b441f-142">Stöd läggs till för hämta och lista katalogpaket</span><span class="sxs-lookup"><span data-stu-id="b441f-142">Add support for catalog package get and list</span></span>
+  - <span data-ttu-id="b441f-143">Stöd läggs till för att lista följande katalogobjekt från djupare överordnade:</span><span class="sxs-lookup"><span data-stu-id="b441f-143">Add support for listing the following catalog items from deeper ancestors:</span></span>
+    + <span data-ttu-id="b441f-144">Tabell</span><span class="sxs-lookup"><span data-stu-id="b441f-144">Table</span></span>
+    + <span data-ttu-id="b441f-145">TVF</span><span class="sxs-lookup"><span data-stu-id="b441f-145">TVF</span></span>
+    + <span data-ttu-id="b441f-146">Visa</span><span class="sxs-lookup"><span data-stu-id="b441f-146">View</span></span>
+    + <span data-ttu-id="b441f-147">Statistik</span><span class="sxs-lookup"><span data-stu-id="b441f-147">Statistics</span></span>
+* <span data-ttu-id="b441f-148">DataLakeStore</span><span class="sxs-lookup"><span data-stu-id="b441f-148">DataLakeStore</span></span>
+  - <span data-ttu-id="b441f-149">Spårningsloggning för `Import-AzureRMDataLakeStoreItem` och `Export-AzureRMDataLakeStoreItem` har inaktiverats som standard för att förbättra prestandan.</span><span class="sxs-lookup"><span data-stu-id="b441f-149">For `Import-AzureRMDataLakeStoreItem` and `Export-AzureRMDataLakeStoreItem` trace logging has been disabled by default to improve performance.</span></span> <span data-ttu-id="b441f-150">Om du vill ha loggningsspårning, använder du parametrarna `-DiagnosticLogLevel` och `-DiagnosticLogPath`</span><span class="sxs-lookup"><span data-stu-id="b441f-150">If trace logging is desired please use the `-DiagnosticLogLevel` and `-DiagnosticLogPath` parameters</span></span>
+  - <span data-ttu-id="b441f-151">En bugg som ibland gjorde att PowerShell kraschade vid uppladdning av många små filer till ADLS har fixats.</span><span class="sxs-lookup"><span data-stu-id="b441f-151">Fixed a bug that would sometimes cause PowerShell to crash when uploading lots of small file to ADLS.</span></span>
+* <span data-ttu-id="b441f-152">EventHub</span><span class="sxs-lookup"><span data-stu-id="b441f-152">EventHub</span></span>
+  - <span data-ttu-id="b441f-153">Felkorrigering:</span><span class="sxs-lookup"><span data-stu-id="b441f-153">Bug fix :</span></span>
+    + <span data-ttu-id="b441f-154">Korrigering för cmdlet-felet i Set-AzureRmEventHubNamespace: ”Nivå” kan inte vara null när den ska vara ”SkuName”</span><span class="sxs-lookup"><span data-stu-id="b441f-154">Fix for Set-AzureRmEventHubNamespace cmdlet error  - 'Tier' cannot be null, where it should be 'SkuName'</span></span>
+    + <span data-ttu-id="b441f-155">Set-AzureRmEventHub – korrigering av objektreferensen inte inställd till en instans av ett objektfel vid uppdatering av EventHub</span><span class="sxs-lookup"><span data-stu-id="b441f-155">Set-AzureRmEventHub - Fix 'Object reference not set to an instance of an object' error while updating EventHub</span></span>
+* <span data-ttu-id="b441f-156">Insikter</span><span class="sxs-lookup"><span data-stu-id="b441f-156">Insights</span></span>
+  - <span data-ttu-id="b441f-157">Add-AzureRm*AlertRule</span><span class="sxs-lookup"><span data-stu-id="b441f-157">Add-AzureRm*AlertRule</span></span>
+    + <span data-ttu-id="b441f-158">Returnerar ett objekt: newResource, statusCode, requestId</span><span class="sxs-lookup"><span data-stu-id="b441f-158">Returns a single object: newResource, statusCode, requestId</span></span>
+  - <span data-ttu-id="b441f-159">Get-AzureRmAlertRule</span><span class="sxs-lookup"><span data-stu-id="b441f-159">Get-AzureRmAlertRule</span></span>
+    + <span data-ttu-id="b441f-160">Utdata räknas nu upp istället för att betraktas som ett enda objekt.</span><span class="sxs-lookup"><span data-stu-id="b441f-160">The output is now enumerated instead of considered a single object.</span></span> <span data-ttu-id="b441f-161">Typen har inte ändrats, det är fortfarande en lista.</span><span class="sxs-lookup"><span data-stu-id="b441f-161">Its type did not change, it is still a list.</span></span>
+  - <span data-ttu-id="b441f-162">Remove-AzureRmAlertRule</span><span class="sxs-lookup"><span data-stu-id="b441f-162">Remove-AzureRmAlertRule</span></span>
+    + <span data-ttu-id="b441f-163">StatusCode följer statuskoden som returneras av begäran, innan var det alltid Ok.</span><span class="sxs-lookup"><span data-stu-id="b441f-163">The statusCode follows the status code returned by the request, before it was Ok always.</span></span>
+  - <span data-ttu-id="b441f-164">Add-AzureRmAutoscaleSetting</span><span class="sxs-lookup"><span data-stu-id="b441f-164">Add-AzureRmAutoscaleSetting</span></span>
+    + <span data-ttu-id="b441f-165">Returnerar nu ett enskilt objekt (inte en lista som tidigare) som innehåller statusCode, requestId och den nyligen skapade/uppdarerade resursen.</span><span class="sxs-lookup"><span data-stu-id="b441f-165">Returns now a single object (not a list as before) containing statusCode, requestId, and the newly created/updated resource.</span></span>
+    + <span data-ttu-id="b441f-166">Statuskoden följer den status som begäran returnerar, innan var den alltid Ok.</span><span class="sxs-lookup"><span data-stu-id="b441f-166">The status code follows the status returned by the request, before it was always Ok.</span></span>
+  - <span data-ttu-id="b441f-167">New-AzureRmAutoscaleRule</span><span class="sxs-lookup"><span data-stu-id="b441f-167">New-AzureRmAutoscaleRule</span></span>
+    + <span data-ttu-id="b441f-168">Parametern ScaleActionType har utökats, den tar nu emot följande värden: ChangeCount, PercentChangeCount, ExactCount.</span><span class="sxs-lookup"><span data-stu-id="b441f-168">The parameter ScaleActionType has been extended, it receives the following values now: ChangeCount, PercentChangeCount, ExactCount.</span></span>
+  - <span data-ttu-id="b441f-169">Remove-AzureRmAutoscaleSetting</span><span class="sxs-lookup"><span data-stu-id="b441f-169">Remove-AzureRmAutoscaleSetting</span></span>
+    + <span data-ttu-id="b441f-170">StatusCode i utdata följer statusCode som returnerades av begäran.</span><span class="sxs-lookup"><span data-stu-id="b441f-170">The statusCode in the output follows the statusCode returned by the request.</span></span> <span data-ttu-id="b441f-171">Innan var den alltid Ok.</span><span class="sxs-lookup"><span data-stu-id="b441f-171">Before it was always Ok.</span></span>
+  - <span data-ttu-id="b441f-172">Get-AzureRMLogProfile</span><span class="sxs-lookup"><span data-stu-id="b441f-172">Get-AzureRMLogProfile</span></span>
+    + <span data-ttu-id="b441f-173">Utdata räknas nu upp.</span><span class="sxs-lookup"><span data-stu-id="b441f-173">The output is now enumerated.</span></span> <span data-ttu-id="b441f-174">Innan ansågs den som ett enda objekt.</span><span class="sxs-lookup"><span data-stu-id="b441f-174">Before it was considered a single object.</span></span> <span data-ttu-id="b441f-175">Utdatatypen fortsätter att vara en lista som tidigare.</span><span class="sxs-lookup"><span data-stu-id="b441f-175">The type of the output remains a list as before.</span></span>
+  - <span data-ttu-id="b441f-176">Remove-AzureRmLogProfile</span><span class="sxs-lookup"><span data-stu-id="b441f-176">Remove-AzureRmLogProfile</span></span>
+    + <span data-ttu-id="b441f-177">PassThru-parametern har implementerats.</span><span class="sxs-lookup"><span data-stu-id="b441f-177">The PassThru parameter has been implemented.</span></span>
+  - <span data-ttu-id="b441f-178">Mått-API</span><span class="sxs-lookup"><span data-stu-id="b441f-178">Metrics API</span></span>
+    + <span data-ttu-id="b441f-179">SDK:n hämtar nu mått från MDM.</span><span class="sxs-lookup"><span data-stu-id="b441f-179">The SDK now retrieves metrics from MDM.</span></span>
+  - <span data-ttu-id="b441f-180">Get-AzureRmMetricDefinition</span><span class="sxs-lookup"><span data-stu-id="b441f-180">Get-AzureRmMetricDefinition</span></span>
+    + <span data-ttu-id="b441f-181">Utdata är fortfarande en lista, men listans struktur har ändrats.</span><span class="sxs-lookup"><span data-stu-id="b441f-181">The output is still a list, but the structure of the list changed.</span></span>
+  - <span data-ttu-id="b441f-182">Get-AzureRmMetric</span><span class="sxs-lookup"><span data-stu-id="b441f-182">Get-AzureRmMetric</span></span>
+    + <span data-ttu-id="b441f-183">Anropet har ändrats.</span><span class="sxs-lookup"><span data-stu-id="b441f-183">The call has changed.</span></span> <span data-ttu-id="b441f-184">Detta är den nya syntaxen: Get-AzureRmMetric ResourceId [MetricNames [TimeGrain] [AggregationType] [StartTime] [EndTime]] [DetailedOutput]</span><span class="sxs-lookup"><span data-stu-id="b441f-184">This is the new syntax: Get-AzureRmMetric ResourceId [MetricNames [TimeGrain] [AggregationType] [StartTime] [EndTime]] [DetailedOutput]</span></span>
+    + <span data-ttu-id="b441f-185">Utdata är en lista och strukturen för dess element har förändrats.</span><span class="sxs-lookup"><span data-stu-id="b441f-185">The output is a list, and the structure of its elements has changed.</span></span>
+* <span data-ttu-id="b441f-186">KeyVault</span><span class="sxs-lookup"><span data-stu-id="b441f-186">KeyVault</span></span>
+  - <span data-ttu-id="b441f-187">Lägger till stöd för säkerhetskopiering/återställning av KeyVault-hemligheter</span><span class="sxs-lookup"><span data-stu-id="b441f-187">Adding backup/restore support for KeyVault secrets</span></span>
+    + <span data-ttu-id="b441f-188">Hemligheter kan säkerhetskopieras och återställas, vilket matchar de funktioner som stöds för nycklar för tillfället</span><span class="sxs-lookup"><span data-stu-id="b441f-188">Secrets can be backed up and restored, matching the functionality currently supported for Keys</span></span>
+
+  - <span data-ttu-id="b441f-189">Säkerhetskopierings-cmdletar för nycklar och hemligheter accepterar nu ett motsvarande objekt som indataparameter</span><span class="sxs-lookup"><span data-stu-id="b441f-189">Backup cmdlets for Keys and Secrets now accept a corresponding object as an input parameter</span></span>
+    + <span data-ttu-id="b441f-190">Anroparen kan kedja hämtning och säkerhetskopiering: Get-AzureKeyVaultKey -VaultName myVault -Name myKey | Backup-AzureKeyVaultKey</span><span class="sxs-lookup"><span data-stu-id="b441f-190">The caller may chain retrieval and backup operations: Get-AzureKeyVaultKey -VaultName myVault -Name myKey | Backup-AzureKeyVaultKey</span></span>
+
+  - <span data-ttu-id="b441f-191">Säkerhetskopierings-cmdletar stöder nu en -Force växel för att skriva över en befintlig fil</span><span class="sxs-lookup"><span data-stu-id="b441f-191">Backup cmdlets now support a -Force switch to overwrite an existing file</span></span>
+    + <span data-ttu-id="b441f-192">Observera att försök att skriva över en befintlig fil inte längre kommer att misslyckas, utan istället tillfrågas användaren hur denne vill fortsätta.</span><span class="sxs-lookup"><span data-stu-id="b441f-192">Note that attempting to overwrite an existing file will no longer throw, and will instead prompt the user for a choice on how to proceed.</span></span>
+* <span data-ttu-id="b441f-193">LogicApp</span><span class="sxs-lookup"><span data-stu-id="b441f-193">LogicApp</span></span>
+  - <span data-ttu-id="b441f-194">Nya parametrar för katastrofåterställnings-cmdletars utbyteskontrollnummer:</span><span class="sxs-lookup"><span data-stu-id="b441f-194">New parameters for Interchange Control Number disaster recovery cmdlets:</span></span>
+    + <span data-ttu-id="b441f-195">Valfri -AgreementType-parameter ("X12", eller "Edifact") för att specificera de relevanta kontrollnumren</span><span class="sxs-lookup"><span data-stu-id="b441f-195">Optional -AgreementType parameter ("X12", or "Edifact") to specify the relevant control numbers</span></span>
+* <span data-ttu-id="b441f-196">MachineLearning</span><span class="sxs-lookup"><span data-stu-id="b441f-196">MachineLearning</span></span>
+  - <span data-ttu-id="b441f-197">Använd en ny version av Azure Machine Learning .Net-SDK:n och lägg till en ny cmdlet</span><span class="sxs-lookup"><span data-stu-id="b441f-197">Consume new version of Azure Machine Learning .Net SDK and add a new cmdlet</span></span>
+    + <span data-ttu-id="b441f-198">Add-AzureRmMlWebServiceRegionalProperty</span><span class="sxs-lookup"><span data-stu-id="b441f-198">Add-AzureRmMlWebServiceRegionalProperty</span></span>
+  - <span data-ttu-id="b441f-199">Mindre textkorrigeringar i hjälptexten.</span><span class="sxs-lookup"><span data-stu-id="b441f-199">Minor wording fixes in help text.</span></span>
+* <span data-ttu-id="b441f-200">Nätverk</span><span class="sxs-lookup"><span data-stu-id="b441f-200">Network</span></span>
+  - <span data-ttu-id="b441f-201">Lade till cmdleten Test-AzureRmNetworkWatcherConnectivity</span><span class="sxs-lookup"><span data-stu-id="b441f-201">Added Test-AzureRmNetworkWatcherConnectivity cmdlet</span></span>
+    + <span data-ttu-id="b441f-202">Returnerar anslutningsinformation för en angiven käll-VM och ett mål</span><span class="sxs-lookup"><span data-stu-id="b441f-202">Returns connectivity information for a specified source VM and a destination</span></span>
+    + <span data-ttu-id="b441f-203">Om anslutningen mellan källa och mål inte går att upprätta, returnerar cmdleten information om problemet</span><span class="sxs-lookup"><span data-stu-id="b441f-203">If connectivity between the source and destination cannot be established, the cmdlet returns details about the issue</span></span>
+* <span data-ttu-id="b441f-204">Profil</span><span class="sxs-lookup"><span data-stu-id="b441f-204">Profile</span></span>
+  - <span data-ttu-id="b441f-205">Lade till cmdleten Send-Feedback: låter en användare starta en uppsättning prompter som skickar feedback till Azure PowerShell-teamet.</span><span class="sxs-lookup"><span data-stu-id="b441f-205">Added \`Send-Feedback' cmdlet: allows a user to initiate a set of prompts which sends feedback to the Azure PowerShell team.</span></span>
+  - <span data-ttu-id="b441f-206">Följande alias har tagits bort eftersom de är i konflikt med befintliga cmdlet-namn i Azure-modulen:</span><span class="sxs-lookup"><span data-stu-id="b441f-206">The following aliases have been removed as they conflicted with existing cmdlet names in the Azure module:</span></span>
+    + <span data-ttu-id="b441f-207">`Enable-AzureDataCollection` (stöds av `Enable-AzureRmDataCollection`)</span><span class="sxs-lookup"><span data-stu-id="b441f-207">`Enable-AzureDataCollection` (supported by `Enable-AzureRmDataCollection`)</span></span>
+    + <span data-ttu-id="b441f-208">`Disable-AzureDataCollection` (stöds av `Disable-AzureRmDataCollection`)</span><span class="sxs-lookup"><span data-stu-id="b441f-208">`Disable-AzureDataCollection` (supported by `Disable-AzureRmDataCollection`)</span></span>
+* <span data-ttu-id="b441f-209">Relä</span><span class="sxs-lookup"><span data-stu-id="b441f-209">Relay</span></span>
+  - <span data-ttu-id="b441f-210">Lägger till cmdletar för Azure-Relay, som låter användare skapa och hantera alla Azure Relay-resurser.</span><span class="sxs-lookup"><span data-stu-id="b441f-210">Adds cmdlets for the Azure Relay which allows users to create and manage all Azure Relay resources.</span></span>
+    + `New-AzureRmRelayNamespace`
+    + `Get-AzureRmRelayNamespace`
+    + `Set-AzureRmRelayNamespace`
+    + `Remove-AzureRmRelayNamespace`
+    + `New-AzureRmWcfRelay`
+    + `Get-AzureRmWcfRelay`
+    + `Set-AzureRmWcfRelay`
+    + `Remove-AzureRmWcfRelay`
+    + `New-AzureRmRelayHybridConnection`
+    + `Get-AzureRmRelayHybridConnection`
+    + `Set-AzureRmRelayHybridConnection`
+    + `Remove-AzureRmRelayHybridConnection`
+    + `Test-AzureRmRelayName`
+    + `Get-AzureRmRelayOperation`
+    + `New-AzureRmRelayKey`
+    + `Get-AzureRmRelayKey`
+    + `New-AzureRmRelayAuthorizationRule`
+    + `Get-AzureRmRelayAuthorizationRule`
+    + `Set-AzureRmRelayAuthorizationRule`
+    + `Remove-AzureRmRelayAuthorizationRule`
+* <span data-ttu-id="b441f-211">Resurser</span><span class="sxs-lookup"><span data-stu-id="b441f-211">Resources</span></span>
+  - <span data-ttu-id="b441f-212">Stöd för distributioner över resursgrupper för New-AzureRmResourceGroupDeployment</span><span class="sxs-lookup"><span data-stu-id="b441f-212">Support cross-resource-group deployments for New-AzureRmResourceGroupDeployment</span></span>
+    + <span data-ttu-id="b441f-213">Användare kan nu använda kapslade distributioner för att distribuera till olika resursgrupper.</span><span class="sxs-lookup"><span data-stu-id="b441f-213">Users can now use nested deployments to deploy to different resource groups.</span></span>
+* <span data-ttu-id="b441f-214">ServiceBus</span><span class="sxs-lookup"><span data-stu-id="b441f-214">ServiceBus</span></span>
+
+  - <span data-ttu-id="b441f-215">Felkorrigering: Egenskapsvärdena för ServiceBus-köobjektet var satt till null, objektet används som indataparameter i cmdleten Set-AzureRmServiceBusQueue för att uppdatera kön.</span><span class="sxs-lookup"><span data-stu-id="b441f-215">Bug Fix: ServiceBus Queue object property values were set to null, the object is used as input parameter in Set-AzureRmServiceBusQueue cmdlet to update Queue.</span></span>
+   - <span data-ttu-id="b441f-216">Egenskaper som påverkas är LockDuration, EntityAvailabilityStatus, DuplicateDetectionHistoryTimeWindow, MaxDeliveryCount och MessageCount</span><span class="sxs-lookup"><span data-stu-id="b441f-216">Properties affected are LockDuration, EntityAvailabilityStatus, DuplicateDetectionHistoryTimeWindow, MaxDeliveryCount and MessageCount</span></span>
+* <span data-ttu-id="b441f-217">ServiceFabric</span><span class="sxs-lookup"><span data-stu-id="b441f-217">ServiceFabric</span></span>
+
+  - <span data-ttu-id="b441f-218">Lade till cmdletar för Service Fabric</span><span class="sxs-lookup"><span data-stu-id="b441f-218">Added cmdlets for service fabric</span></span>
+    + <span data-ttu-id="b441f-219">Add-AzureRmServiceFabricApplicationCertificate       Lägg till ett certifikat som kommer att användas som programcertifikat</span><span class="sxs-lookup"><span data-stu-id="b441f-219">Add-AzureRmServiceFabricApplicationCertificate       Add a certificate which will be used as application certificate</span></span>
+    + <span data-ttu-id="b441f-220">Add-AzureRmServiceFabricClientCertificate       Lägg till ett namn eller tumavtryck till klusterinställningarna för klientautentiseringen</span><span class="sxs-lookup"><span data-stu-id="b441f-220">Add-AzureRmServiceFabricClientCertificate       Add a common name or thumbprint to the cluster settings for client authentication</span></span>
+    + <span data-ttu-id="b441f-221">Add-AzureRmServiceFabricClusterCertificate       Lägg till ett sekundärt klustercertifikat till klustret för att rulla över det tidigare certifikatet</span><span class="sxs-lookup"><span data-stu-id="b441f-221">Add-AzureRmServiceFabricClusterCertificate       Add a secondary cluster certificate to the cluster for rolling over the existing certificate</span></span>
+    + <span data-ttu-id="b441f-222">Add-AzureRmServiceFabricNodes Lägg till noder/VM:ar av en specifik nodtyp till ett kluster</span><span class="sxs-lookup"><span data-stu-id="b441f-222">Add-AzureRmServiceFabricNodes       Add nodes/VMs of a specific node type to a cluster</span></span>
+    + <span data-ttu-id="b441f-223">Add-AzureRmServiceFabricNodeType Lägg till en nodtyp/VM:ar till ett befintligt kluster</span><span class="sxs-lookup"><span data-stu-id="b441f-223">Add-AzureRmServiceFabricNodeType       Add a node type/VMs to an existing cluster</span></span>
+    + <span data-ttu-id="b441f-224">Get-AzureRmServiceFabricCluster hämta information om klusterresursen</span><span class="sxs-lookup"><span data-stu-id="b441f-224">Get-AzureRmServiceFabricCluster       Get the details of the cluster resource</span></span>
+    + <span data-ttu-id="b441f-225">New-AzureRmServiceFabricCluster Skapa ett nytt ServiceFabric-kluster.</span><span class="sxs-lookup"><span data-stu-id="b441f-225">New-AzureRmServiceFabricCluster Create a new ServiceFabric cluster.</span></span> <span data-ttu-id="b441f-226">Det här kommandot har många överlagringar för att täcka olika scenarier</span><span class="sxs-lookup"><span data-stu-id="b441f-226">This command has many overloads to cover various scenarios</span></span>
+    + <span data-ttu-id="b441f-227">Remove-AzureRmServiceFabricClientCertificate       Ta bort ett klientcertifikat från att användas för åtkomst till ett kluster</span><span class="sxs-lookup"><span data-stu-id="b441f-227">Remove-AzureRmServiceFabricClientCertificate       Remove a client certificate from being used to access a cluster</span></span>
+    + <span data-ttu-id="b441f-228">Remove-AzureRmServiceFabricClusterCertificate       Ta bort ett klustercertifikat från att användas för klustersäkerhet</span><span class="sxs-lookup"><span data-stu-id="b441f-228">Remove-AzureRmServiceFabricClusterCertificate       Remove a cluster certificate from being used for cluster security</span></span>
+    + <span data-ttu-id="b441f-229">Remove-AzureRmServiceFabricNodes       Ta bort noder från en specifik nodtyp från ett kluster</span><span class="sxs-lookup"><span data-stu-id="b441f-229">Remove-AzureRmServiceFabricNodes       Remove nodes from a specific node type from a cluster</span></span>
+    + <span data-ttu-id="b441f-230">Remove-AzureRmServiceFabricNodeType       Ta bort en nodtyp från ett kluster</span><span class="sxs-lookup"><span data-stu-id="b441f-230">Remove-AzureRmServiceFabricNodeType       Remove a node type from a cluster</span></span>
+    + <span data-ttu-id="b441f-231">Remove-AzureRmServiceFabricSettings       Ta bort en eller flera ServiceFabric-inställningar från ett kluster</span><span class="sxs-lookup"><span data-stu-id="b441f-231">Remove-AzureRmServiceFabricSettings       Remove one or more ServiceFabric settings from a cluster</span></span>
+    + <span data-ttu-id="b441f-232">Set-AzureRmServiceFabricSettings       Lägg till eller uppdatera en eller flera ServiceFabric-inställningar för ett kluster</span><span class="sxs-lookup"><span data-stu-id="b441f-232">Set-AzureRmServiceFabricSettings       Add or update one or more ServiceFabric settings of a cluster</span></span>
+    + <span data-ttu-id="b441f-233">Set-AzureRmServiceFabricUpgradeType       Ändra ServiceFabric-uppgraderingstypen för ett kluster</span><span class="sxs-lookup"><span data-stu-id="b441f-233">Set-AzureRmServiceFabricUpgradeType       Change the ServiceFabric upgrade type of a cluster</span></span>
+    + <span data-ttu-id="b441f-234">Update-AzureRmServiceFabricDurability       Ändra hållbarhetsnivån för ett kluster</span><span class="sxs-lookup"><span data-stu-id="b441f-234">Update-AzureRmServiceFabricDurability       Change the durability tier of a cluster</span></span>
+    + <span data-ttu-id="b441f-235">Update-AzureRmServiceFabricReliability       Ändra tillförlitlighetsnivån för ett kluster</span><span class="sxs-lookup"><span data-stu-id="b441f-235">Update-AzureRmServiceFabricReliability       Change the reliability tier of a cluster</span></span>
+* <span data-ttu-id="b441f-236">SQL</span><span class="sxs-lookup"><span data-stu-id="b441f-236">Sql</span></span>
+  - <span data-ttu-id="b441f-237">Lade till parametern -SampleName till New-AzureRmSqlDatabase</span><span class="sxs-lookup"><span data-stu-id="b441f-237">Added -SampleName parameter to New-AzureRmSqlDatabase</span></span>
+  - <span data-ttu-id="b441f-238">Uppdateringar till redundansgrupp-cmdletar</span><span class="sxs-lookup"><span data-stu-id="b441f-238">Updates to Failover Group cmdlets</span></span>
+  - <span data-ttu-id="b441f-239">Tog bort Tagg-parametrarna</span><span class="sxs-lookup"><span data-stu-id="b441f-239">Remove 'Tag' parameters</span></span>
+  - <span data-ttu-id="b441f-240">Tog bort parametrarna PartnerResourceGroupName och PartnerServerName från cmdleten Remove-AzureRmSqlDatabaseFailoverGroup</span><span class="sxs-lookup"><span data-stu-id="b441f-240">Remove 'PartnerResourceGroupName' and 'PartnerServerName' parameters from Remove-AzureRmSqlDatabaseFailoverGroup cmdlet</span></span>
+  - <span data-ttu-id="b441f-241">Lade till parametern GracePeriodWithDataLossHours till cmdletarna New- och Set- som så småningom kommer ersätta GracePeriodWithDataLossHour</span><span class="sxs-lookup"><span data-stu-id="b441f-241">Add 'GracePeriodWithDataLossHours' parameter to New- and Set- cmdlets, which shall eventually replace 'GracePeriodWithDataLossHour'</span></span>
+  - <span data-ttu-id="b441f-242">Dokumentation har utökats och uppdaterats</span><span class="sxs-lookup"><span data-stu-id="b441f-242">Documentation has been fleshed out and updated</span></span>
+  - <span data-ttu-id="b441f-243">Formateringen för returnerade objekt har ändrats och en del fel har korrigerats där fält inte alltid var ifyllda</span><span class="sxs-lookup"><span data-stu-id="b441f-243">Change formatting of returned objects and fix some bugs where fields were not always populated</span></span>
+  - <span data-ttu-id="b441f-244">Egenskaperna DatabaseNames och PartnerLocation har lagts till i redundansgruppobjektet</span><span class="sxs-lookup"><span data-stu-id="b441f-244">Add 'DatabaseNames' and 'PartnerLocation' properties to Failover Group object</span></span>
+  - <span data-ttu-id="b441f-245">Felet som gjorde att Switch-cmdleten returnerade omedelbart istället för att vänta tills åtgärden var slutförd har korrigerats</span><span class="sxs-lookup"><span data-stu-id="b441f-245">Fix bug causing Switch- cmdlet to return immediately rather than waiting for operation to complete</span></span>
+  - <span data-ttu-id="b441f-246">Felet med heltalsspill har korrigerats för när ett högt respitperiodvärde används</span><span class="sxs-lookup"><span data-stu-id="b441f-246">Fix integer overflow bug when high grace period values are used</span></span>
+  - <span data-ttu-id="b441f-247">Justera respitperioden till minst 1 timme om en lägre sådan anges</span><span class="sxs-lookup"><span data-stu-id="b441f-247">Adjust grace period to a minimum of 1 hour if a lower one is provided</span></span>
+  - <span data-ttu-id="b441f-248">Ta bort "Usage_Anomaly" från godkända värden för "ExcludedDetectionType"-parametern för cmdleten Set-AzureRmSqlDatabaseThreatDetectionPolicy och cmdleten Set-AzureRmSqlServerThreatDetectionPolicy.</span><span class="sxs-lookup"><span data-stu-id="b441f-248">Remove "Usage_Anomaly" from the accepted values for "ExcludedDetectionType" parameter of Set-AzureRmSqlDatabaseThreatDetectionPolicy cmdlet and Set-AzureRmSqlServerThreatDetectionPolicy cmdlet.</span></span>
+* <span data-ttu-id="b441f-249">Lagring</span><span class="sxs-lookup"><span data-stu-id="b441f-249">Storage</span></span>
+  - <span data-ttu-id="b441f-250">Uppgradera SRP SDK till 6.3.0</span><span class="sxs-lookup"><span data-stu-id="b441f-250">Upgrade SRP SDK to 6.3.0</span></span>
+  - <span data-ttu-id="b441f-251">New/Set-AzureRmStorageAccount:Lägg till en ny parameter för att stödja EnableHttpsTrafficOnly</span><span class="sxs-lookup"><span data-stu-id="b441f-251">New/Set-AzureRmStorageAccount:Add a new parameter to support EnableHttpsTrafficOnly</span></span>
+  - <span data-ttu-id="b441f-252">New/Set/Get-AzureRmStorageAccount: Returnerat lagringskonto innehåller ett nytt attribut EnableHttpsTrafficOnly</span><span class="sxs-lookup"><span data-stu-id="b441f-252">New/Set/Get-AzureRmStorageAccount: Returned Storage Account contains a new attribute EnableHttpsTrafficOnly</span></span>
+* <span data-ttu-id="b441f-253">Azure.Storage</span><span class="sxs-lookup"><span data-stu-id="b441f-253">Azure.Storage</span></span>
+  - <span data-ttu-id="b441f-254">Uppgradera till Azure Storage-klientbiblioteket 8.1.1 och Azure Storage DataMovement-biblioteket 0.5.1</span><span class="sxs-lookup"><span data-stu-id="b441f-254">Upgrade to Azure Storage Client Library 8.1.1 and Azure Storage DataMovement Library 0.5.1</span></span>
+  - <span data-ttu-id="b441f-255">Lägg till en ny cmdlet för att stödja den inkrementella kopieringsfunktionen i blobbar</span><span class="sxs-lookup"><span data-stu-id="b441f-255">Add a new cmdlet to support blob Incremental Copy feature</span></span>
