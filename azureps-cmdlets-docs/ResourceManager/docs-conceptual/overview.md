@@ -10,13 +10,14 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.manager: carmonm
 ms.date: 05/15/2017
-ms.openlocfilehash: f26b204604018449584c1fd2ff199728487b1515
-ms.sourcegitcommit: 226527be7cb647acfe2ea9ab151185053ab3c6db
+ms.openlocfilehash: dbcc818ecc06d3206b8ccd6f8743c670c86cead0
+ms.sourcegitcommit: 5f2c794bfa44ec4ffacdd73f548288874210a498
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 07/06/2017
 ---
-# <a name="overview-of-azure-powershell"></a>Översikt över Azure PowerShell
+# Översikt över Azure PowerShell
+<a id="overview-of-azure-powershell" class="xliff"></a>
 
 Azure PowerShell tillhandahåller en uppsättning cmdletar som använder [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)-modellen för att hantera dina Azure-resurser.
 
@@ -29,19 +30,19 @@ Med hjälp av följande exempel kan du lära dig hur du utför vanliga scenarier
 * [Web Apps](/azure/app-service-web/app-service-powershell-samples?toc=/powershell/azure/toc.json)
 * [SQL-databaser](/azure/sql-database/sql-database-powershell-samples?toc=/powershell/azure/toc.json)
 
-> [!NOTE]
-> Om du har distributioner som använder sig av den klassiska distributionsmodellen och som inte kan konverteras, kan du installera Service Management-versionen av Azure PowerShell. Mer information finns i
 
-[Installera Azure PowerShell Service Management-modulen](/powershell/azure/servicemanagement/install-azure-ps).
+> [!NOTE] > Om du har distributioner som använder den klassiska distributionsmodellen och inte kan konverteras kan du installera Service Management-versionen av Azure PowerShell. Läs mer i informationen om hur du [installerar Azure PowerShell Service Management-modulen](/powershell/azure/servicemanagement/install-azure-ps).
 
 
-### <a name="need-help-with-powershell"></a>Behöver du hjälp med PowerShell?
+### Behöver du hjälp med PowerShell?
+<a id="need-help-with-powershell" class="xliff"></a>
 
 Om du inte känner till PowerShell, kan du ta hjälp av en introduktion till PowerShell. Om du vill komma igång med PowerShell kan du läsa informationen i [Scripting with PowerShell](https://technet.microsoft.com/library/bb978526.aspx) (Skript med PowerShell).
 
 Du kan även titta på den här videon: [PowerShell Basics: (Part 1) Getting Started with PowerShell](https://channel9.msdn.com/Blogs/Taste-of-Premier/PowerShellBasicsPart1) (Grundläggande om PowerShell: (Del 1) Komma igång med PowerShell).
 
-## <a name="other-azure-powershell-modules"></a>Andra Azure PowerShell-moduler
+## Andra Azure PowerShell-moduler
+<a id="other-azure-powershell-modules" class="xliff"></a>
 
 * [Azure Active Directory](/powershell/azure/active-directory/)
 * [Azure Information Protection](/powershell/azure/aip/)
