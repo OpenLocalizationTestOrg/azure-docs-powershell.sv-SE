@@ -9,11 +9,11 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 03/06/2017
-ms.openlocfilehash: c51c727c1cb022eca59f819c7f24d8e058c677da
-ms.sourcegitcommit: 226527be7cb647acfe2ea9ab151185053ab3c6db
+ms.openlocfilehash: 164af369d49e3044e5409c28d8b6145ebc067313
+ms.sourcegitcommit: 020066d68d4ab68da162a4ae0cb4e239241f950f
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 07/28/2017
 ---
 # <a name="installing-the-azure-powershell-service-management-module"></a>Installera Azure PowerShell Service Management-modulen
 
@@ -35,7 +35,7 @@ Name          Version Path
 PowerShellGet 1.0.0.1 C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\1.0.0.1\PowerShellGet.psd1
 ```
 
-Om du inte har installerat PowerShellGet kan du läsa avsnittet [Hämta PowerShellGet](install-azurerm-ps.md#how-to-get-powershellget).
+Om du inte har installerat PowerShellGet kan du läsa avsnittet [Hämta PowerShellGet](#how-to-get-powershellget).
 
 ## <a name="step-2-install-azure-powershell"></a>Steg 2: Installera Azure PowerShell
 
@@ -76,3 +76,20 @@ Azure PowerShell-modulerna uppdateras kontinuerligt. Om du märker att onlinehj�
 Om du vill ha exempelskript som kan hjälpa dig att automatisera vissa av de vanliga uppgifterna i Azure kan du se [Windows Azure Script Center](http://www.windowsazure.com/documentation/scripts/).
 
 Allmän information om installation, inlärning, användning och anpassning av Windows PowerShell finns i [Skript med Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=320210).
+
+### <a name="how-to-get-powershellget"></a>Hämta PowerShellGet
+
+|OS-version|Installationsinstruktioner|
+|---|---|
+|Jag har Windows 10 eller Windows Server 2016|Inbyggt i Windows Management Framework (WMF) 5.0 som ingår i operativsystemet|
+|Jag vill uppgradera till PowerShell 5|[Installera den senaste versionen av WMF](https://www.microsoft.com/en-us/download/details.aspx?id=54616)|
+|Jag använder en Windows-version med PowerShell 3 eller PowerShell 4|[Hämta PackageManagement-moduler](http://go.microsoft.com/fwlink/?LinkID=746217)|
+
+<a id="helpmechoose"></a>
+### <a name="checking-the-version-of-azure-powershell"></a>Kontrollera Azure PowerShell-versionen
+
+Flera versioner av Azure PowerShell stöds, men vi rekommenderar att du uppgraderar till den senaste versionen så snabbt som möjligt. Om du vill kontrollera vilken version av Azure PowerShell som du har installerat kör du `Get-Module AzureRM` från kommandoraden.
+
+```powershell
+Get-Module AzureRM -list | Select-Object Name,Version,Path
+```

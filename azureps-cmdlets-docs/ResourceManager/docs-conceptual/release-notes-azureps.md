@@ -10,18 +10,257 @@ ms.product: azure
 ms.devlang: powershell
 ms.topic: conceptual
 ms.workload: 
-ms.date: 05/18/2017
-ms.openlocfilehash: 97a23180a1fc65d96fdc9dbdffcbe3501a4c4c2a
-ms.sourcegitcommit: 226527be7cb647acfe2ea9ab151185053ab3c6db
+ms.date: 07/26/2017
+ms.openlocfilehash: cc2fe75f498f9043e5a4b632c144877af0143173
+ms.sourcegitcommit: 20bcef86db4e4869125bb63085fcffd009c19280
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 07/27/2017
 ---
 # <a name="release-notes"></a>Viktig information
 
 Det här är en lista över ändringar som har gjorts i Azure PowerShell i den här versionen.
 
-## <a name="version-400"></a>Version 4.0.0
+## <a name="20170717---version-421"></a>2017.07.17 – version 4.2.1
+* Compute
+    - Åtgärda problemet med VM-disken och VM-diskens ögonblicksbild för att skapa och uppdatera cmdletar, (länk)[https://github.com/azure/azure-powershell/issues/4309]
+      - New-AzureRmDisk
+      - New-AzureRmSnapshot
+      - Update-AzureRmDisk
+      - Update-AzureRmSnapshot
+* Profil
+    - Åtgärda problemet med icke-interaktiv användarautentisering i RDFE (länk)[https://github.com/Azure/azure-powershell/issues/4299]
+* ServiceManagement
+    - Åtgärda problemet med icke-interaktiv användarautentisering (länk)[https://github.com/Azure/azure-powershell/issues/4299]
+
+## <a name="2017711---version-420"></a>2017.7.11 – version 4.2.0
+* AnalysisServices
+    * Lägg till nytt API för dataplanen
+        - API för att hämta AS-serverloggen har introducerats, Export-AzureAnalysisServicesInstanceLog
+* Automation
+    * Korrekt inställning av värdet TimeZone för vecko- och månadsscheman för New-AzureRmAutomationSchedule
+        - Mer information finns här: https://github.com/Azure/azure-powershell/issues/3043
+* AzureBatch
+    - Ny cmdlet, Get-AzureBatchJobPreparationAndReleaseTaskStatus, har lagts till.
+    - Start och slut för byteintervall har lagts till i parametrarna för Get-AzureBatchNodeFileContent.
+* CognitiveServices
+    * Integrera med Cognitive Services Management SDK, version 1.0.0.
+    * Åtgärda ett fel med kontrollen av längden på kontonamnet.
+* Compute
+    * Stöd för lagringskontotypen för avbildningsdisken:
+        - Parametern ”StorageAccountType” har lagts till i Set-AzureRmImageOsDisk och Add-AzureRmImageDataDisk
+    * Funktionen PrivateIP och PublicIP i Vmss Ip-konfigurationen:
+        - Namnen ”PrivateIPAddressVersion”, ”PublicIPAddressConfigurationName”, ”PublicIPAddressConfigurationIdleTimeoutInMinutes”, ”DnsSetting” har lagts till i New-AzureRmVmssIpConfig
+        - Parametern ”PrivateIPAddressVersion” för att ange IPv4 eller IPv6 har lagts till i New-AzureRmVmssIpConfig
+    * Funktion för prestandaunderhåll:
+        - Växlingsparametern ”PerformMaintenance” har lagts till i Restart-AzureRmVM.
+        - Get-AzureRmVM -Status visar information om prestandaunderhåll för angiven virtuell dator
+    * Identitetsfunktion för virtuell dator:
+        - Parametern ”IdentityType” har lagts till i New-AzureRmVMConfig och UpdateAzureRmVM
+        - Get-AzureRmVM visar identitetsinformationen för den angivna virtuella datorn
+    * Funktion för Vmss-identitet:
+        - Parametern ”IdentityType” har lagts till i New-AzureRmVmssConfig
+        - Get-AzureRmVmss visar identitetsinformationen för angiven Vmss
+    * Funktion för Vmss-startdiagnostik:
+        - Ny cmdlet för att ställa in diagnostik av Vmss-objekt: Set-AzureRmVmssBootDiagnostics
+        - Parametern ”BootDiagnostic” har lagts till i New-AzureRmVmssConfig
+    * Funktionen Vmss LicenseType:
+        - Parametern ”LicenseType” har lagts till i New-AzureRmVmssConfig
+    * Stöd för RecoveryPolicyMode:
+        - Parametern ”RecoveryPolicyMode” har lagts till i New-AzureRmVmssConfig
+    * Funktion för beräkningsresurs-SKU:
+        - Ny cmdlet, ”Get-AzureRmComputeResourceSku”, listar alla beräkningsresurs-SKU:er
+* DataFactories
+    * Avverka New-AzureRmDataFactoryGatewayKey
+    * Introducera funktionen för gateway-auktoriseringsnyckeln genom att lägga till New-AzureRmDataFactoryGatewayAuthKey och Get-AzureRmDataFactoryGatewayAuthKey
+* DataLakeAnalytics
+    * Lägg till stöd för beräkningsprincip-CRUD med hjälp av följande kommandon:
+        - New-AzureRMDataLakeAnalyticsComputePolicy
+        - Get-AzureRMDataLakeAnalyticsComputePolicy
+        - Remove-AzureRMDataLakeAnalyticsComputePolicy
+        - Update-AzureRMDataLakeAnalyticsComputePolicy
+    * Lägg till stöd för metadata för jobbrelationen för hjälp med återkommande jobb och jobbpipeliner. Följande kommandon har uppdaterats eller lagts till:
+        - Submit-AzureRMDataLakeAnalyticsJob
+        - Get-AzureRMDataLakeAnalyticsJob
+        - Get-AzureRMDataLakeAnalyticsJobRecurrence
+        - Get-AzureRMDataLakeAnalyticsJobPipeline
+    * Tokenmålgruppen för jobb- och katalog-API:er har uppdaterats för att använda rätt Data Lake-specifik målgrupp i stället för Azure Resource-målgruppen.
+* DataLakeStore
+    * Stöd har lagts till för användarhanterade KeyVault-nyckelrotationer i cmdleten Set-AzureRMDataLakeStoreAccount
+    * Uppdatering av livskvalitet har lagts till för att automatiskt utlösa ett `enableKeyVault`-anrop när ett användarhanterat KeyVault läggs till eller en nyckel roteras.
+    * Tokenmålgruppen för jobb- och katalog-API:er har uppdaterats för att använda rätt Data Lake-specifik målgrupp i stället för Azure Resource-målgruppen.
+    * Ett fel som begränsar storleken på filer som skapas/läggs till med följande cmdletar har åtgärdats:
+        - New-AzureRmDataLakeStoreItem
+        - Add-AzureRmDataLakeStoreItemContent
+* DNS
+    * Åtgärda fel i pipingscenariot för Get-AzureRmDnsZone
+        - Mer information finns här: https://github.com/Azure/azure-powershell/issues/4203
+* HDInsight
+    * Stöd för att aktivera/inaktivera Operations Management Suite (OMS) har lagts till
+    * Nya cmdletar
+        - Enable-AzureRmHDInsightOperationsManagementSuite
+        - Disable-AzureRmHDInsightOperationsManagementSuite
+        - Get-AzureRmHDInsightOperationsManagementSuite
+    * Lägg till nya parametrar för att ställa in anpassade Spark-konfigurationer i Add-AzureRmHDInsightConfigValues
+        - Parametrarna SparkDefaults och SparkThriftConf för Spark 1.6
+        - Parametrarna Spark2Defaults och Spark2ThriftConf för Spark 2.0
+* Insikter
+    * Problem nr. 4215 (ändringsbegäran) tar bort 15-dagarsgränsen i tidsperioden för cmdleten Get-AzureRmLog. Även mindre ändringar av enhetens testnamn.
+    * Problem nr. 3957 är åtgärdat för Get-AzureRmLog
+        - Problem nr. 1: Serverdelen returnerar poster på sidor med 200 poster vardera, som är länkade genom fortsättningstoken till nästa sida. Kunderna har sett att cmdleten endast returnerar 200 poster när de visste att det fanns fler. Detta hände oavsett vilket värde som ställdes in för MaxEvents, såvida inte värdet var mindre än 200.
+        - Problem nr. 2: Dokumentationen innehöll felaktiga data om denna cmdlet, t.ex. att standardtidsperioden var 1 timme.
+        - Korrigering nr. 1: Cmdleten följer nu fortsättningstoken som returneras av serverdelen tills den når MaxEvents eller slutet på uppsättningen.<br>Standardvärdet för MaxEvents är 1 000 och det högsta värdet är 100 000. Ett värde för MaxEvents som är mindre än 1 ignoreras och standardvärdet används i stället. Dessa värden och beteenden har inte ändrats. De dokumenteras nu på rätt sätt.<br>Ett alias för MaxEvents har lagts till, MaxRecords, eftersom namnet på cmdleten inte talar om händelser längre, utan endast om loggarna.
+        - Korrigering nr. 2: Dokumentationen innehåller korrekt och mer detaljerad information: nytt alias, korrekt tidsperiod, rätt standard, minimum- och maximumvärden.
+* KeyVault
+    * Ta bort e-postadressen från katalogfrågan när -UserPrincipalName anges för cmdletarna Set-AzureRMKeyVaultAccessPolicy och Remove-AzureRMKeyVaultAccessPolicy.
+      - Båda cmdletarna har nu en -EmailAddress-parameter som kan användas i stället för parametern -UserPrincipalName när frågor efter e-postadress är olämpliga.  Om det finns fler än en matchande e-postadress i katalogen misslyckas cmdleten.
+* Nätverk
+    * New-AzureRmIpsecPolicy: SALifeTimeSeconds och SADataSizeKilobytes är inte längre obligatoriska parametrar
+        - SALifeTimeSeconds anges som standard till 27 000 sekunder
+        - SADataSizeKilobytes anges som standard till 102 400 000 KB
+    * Stöd har lagts till för anpassad chiffersvitkonfiguration med SSL-princip och för att ange alla SSL-alternativ för API:t i Application Gateway
+        - Valfri parameter har lagts till: -PolicyType, -PolicyName, -MinProtocolVersion, -Ciphersuite
+            - Add-AzureRmApplicationGatewaySslPolicy
+            - New-AzureRmApplicationGatewaySslPolicy
+            - Set-AzureRmApplicationGatewaySslPolicy
+        - Get-AzureRmApplicationGatewayAvailableSslOptions har lagts till (Alias: List-AzureRmApplicationGatewayAvailableSslOptions)
+        - Get-AzureRmApplicationGatewaySslPredefinedPolicy har lagts till (Alias: List-AzureRmApplicationGatewaySslPredefinedPolicy)
+    * Omdirigeringsstöd har lagts till i Application Gateway
+        - Add-AzureRmApplicationGatewayRedirectConfiguration har lagts till
+        - Get-AzureRmApplicationGatewayRedirectConfiguration har lagts till
+        - New-AzureRmApplicationGatewayRedirectConfiguration har lagts till
+        - Remove-AzureRmApplicationGatewayRedirectConfiguration har lagts till
+        - Set-AzureRmApplicationGatewayRedirectConfiguration har lagts till
+        - Valfri parameter har lagts till: -RedirectConfiguration
+            - Add-AzureRmApplicationGatewayRequestRoutingRule
+            - New-AzureRmApplicationGatewayRequestRoutingRule
+            - Set-AzureRmApplicationGatewayRequestRoutingRule
+        - Valfri parameter har lagts till: -DefaultRedirectConfiguration
+            - Add-AzureRmApplicationGatewayUrlPathMapConfig
+            - New-AzureRmApplicationGatewayUrlPathMapConfig
+            - Set-AzureRmApplicationGatewayUrlPathMapConfig
+        - Valfri parameter har lagts till: -RedirectConfiguration
+            - Add-AzureRmApplicationGatewayPathRuleConfig
+            - New-AzureRmApplicationGatewayPathRuleConfig
+            - Set-AzureRmApplicationGatewayPathRuleConfig
+        - Valfri parameter har lagts till: -RedirectConfigurations
+            - New-AzureRmApplicationGateway
+            - Set-AzureRmApplicationGateway
+    * Stöd för azure-webbplatser har lagts till i Application Gateway
+        - New-AzureRmApplicationGatewayProbeHealthResponseMatch har lagts till
+        - Valfria parametrar har lagts till: -PickHostNameFromBackendHttpSettings, -MinServers, -Match
+            - Add-AzureRmApplicationGatewayProbeConfig
+            - New-AzureRmApplicationGatewayProbeConfig
+            - Set-AzureRmApplicationGatewayProbeConfig
+        - Valfria parametrar har lagts till: -PickHostNameFromBackendAddress, -AffinityCookieName, -ProbeEnabled, -Path
+            - Add-AzureRmApplicationGatewayBackendHttpSettings
+            - New-AzureRmApplicationGatewayBackendHttpSettings
+            - Set-AzureRmApplicationGatewayBackendHttpSettings
+    * Uppdatera Get-AzureRmPublicIPaddress för att hämta publicipaddress-resurser som skapas via en VM-skalningsuppsättning
+    * Cmdlet har lagts till för att hämta aktuell användning för virtuellt nätverk
+        - Get-AzureRmVirtualNetworkUsageList
+* Profil
+    * Åtgärdat fel när Import-AzureRmContext eller Save-AzureRmContext används
+        - Mer information finns här: https://github.com/Azure/azure-powershell/issues/3954
+* RecoveryServices.SiteRecovery
+    * Introducerar en ny modul för Azure Site Recovery-åtgärder.
+        - Alla cmdletar börjar med AzureRmRecoveryServicesAsr*
+* SQL
+    * Lägg till cmdletar för datasynkronisering för PowerShell i AzureRM.Sql
+    * Uppdaterade AzureRmSqlServer-cmdletar för att använda den nya REST API-versionen som undviker tidsgränser när servern skapas.
+    * Föråldrade cmdletar för serveruppgradering eftersom den gamla serverversionen (2.0) inte längre finns.
+    * Lägg till en ny valfri växlingsparameter "AssignIdentity" i cmdletarna New-AzureRmSqlServer och Set-AzureRmSqlServer för att ge stöd för etablering av en resursidentitet för SQL server-resursen
+    * Parametern ResourceGroupName är nu valfri för Get-AzureRmSqlServer
+        - Mer information finns här: https://github.com/Azure/azure-powershell/issues/635
+* ServiceManagement för ExpressRoute:
+    * Cmdleten New-AzureBgpPeering har uppdaterats för att lägga till följande nya alternativ:
+        - PeerAddressType: Värdena för "IPv4" eller "IPv6" kan specificeras för att skapa en BGP-peering av motsvarande adressfamiljtyp
+    * Cmdleten Set-AzureBgpPeering har uppdaterats för att lägga till följande nya alternativ:
+        - PeerAddressType: värdena för "IPv4" eller "IPv6" kan anges för att uppdatera BGP-peering av motsvarande adressfamiljtyp
+    * Cmdleten Remove-AzureBgpPeering har uppdaterats för att lägga till följande nya alternativ:
+        - PeerAddressType: värdena "IPv4", "IPv6" eller All kan specificeras för att ta bort BGP-peering av motsvarande adressfamiljtyp eller alla
+
+## <a name="20170607---version-410"></a>2017.06.07 – version 4.1.0
+* AnalysisServices
+    * Nya SKU:er har lagts till: B1, B2, S0
+    * Stöd för att skala upp/ned har lagts till
+* CognitiveServices
+    * Uppdatera detaljerad visning av licensavtal när Cognitive Services-resurser skapas
+* Compute
+    * Åtgärda Test-AzureRmVMAEMExtension för virtuella maskiner med flera hanterade diskar
+    * Set-AzureRmVMAEMExtension har uppdaterats: Lägg till information om cachelagring för Premium Managed Disks
+    * Add-AzureRmVhd: Storleksgränsen för VHD har ökats till 4 TB.
+    * Stop-AzureRmVM: Förtydliga dokumentationen för parametern STayProvisioned
+    * New-AzureRmDiskUpdateConfig
+      * Föråldrade parametrar CreateOption, StorageAccountId, ImageReference, SourceUri, SourceResourceId
+    * Set-AzureRmDiskUpdateImageReference: Föråldrad cmdlet
+    * New-AzureRmSnapshotUpdateConfig
+      * Föråldrade parametrar CreateOption, StorageAccountId, ImageReference, SourceUri, SourceResourceId
+    * Set-AzureRmSnapshotUpdateImageReference: Föråldrad Cmdlet
+* DataLakeStore
+    * Enable-AzureRmDataLakeStoreKeyVault (Enable-AdlStoreKeyVault)
+      * Aktivera hanterad KeyVault-kryptering för DataLake-lagring
+* DevTestLabs
+    * Uppdatera cmdletar så att de fungerar med den aktuella och uppdaterade DevTest Labs API-versionen.
+* IotHub
+    * Lägg till routningsstöd för IoTHub-cmdletar
+* KeyVault
+  * Nya cmdletar har stöd för hanterade KeyVault-lagringskontonycklar
+    * Get-AzureKeyVaultManagedStorageAccount
+    * Add-AzureKeyVaultManagedStorageAccount
+    * Remove-AzureKeyVaultManagedStorageAccount
+    * Update-AzureKeyVaultManagedStorageAccount
+    * Update-AzureKeyVaultManagedStorageAccountKey
+    * Get-AzureKeyVaultManagedStorageSasDefinition
+    * Set-AzureKeyVaultManagedStorageSasDefinition
+    * Remove-AzureKeyVaultManagedStorageSasDefinition
+* Nätverk
+    * Get-AzureRmNetworkUsage: Ny cmdlet visar nätverksanvändning och kapacitetsinformation
+    * Nya GatewaySku-alternativ har lagts till för VirtualNetworkGateways
+        * VpnGw1, VpnGw2, VpnGw3 är de nya SKU:erna som har lagts till för VPN-gatewayer
+    * Set-AzureRmNetworkWatcherConfigFlowLog
+      * Åtgärdade hjälpexempel
+* NotificationHubs
+    * Transparent uppdatering av NotificationHubs-cmdletar för nytt API
+* Profil
+    * Resolve-AzureRmError
+      * Ny cmdlet visar information om fel och undantag som utlöses av cmdletar, inklusive serverförfrågan/svarsdata
+    * Send-Feedback
+      * Sändning av feedback utan inloggning har aktiverats
+    * Get-AzureRmSubscription
+      * Åtgärda fel vid hämtning av CSP-prenumerationer
+* Resurser
+    * Åtgärdat problem där Get-AzureRMRoleAssignment ger en felaktig förfrågan om antalet rolltilldelningar är fler än 1 000
+        * Användarna kan nu använda Get-AzureRMRoleAssignment även om de rolltilldelningar som returneras är fler än 1 000
+* SQL
+    * Restore-AzureRmSqlDatabase: Uppdatera dokumentationsexempel
+* Lagring
+    * Lägg till stöd för AssignIdentity-inställningen för cmdletar för lagringskontot i resursläget
+        * New-AzureRmStorageAccount
+        * Set-AzureRmStorageAccount
+    * Lägg till stöd för kundnyckeln för cmdletar för lagringskontot i resursläget
+        * Set-AzureRmStorageAccount
+        * New-AzureRmStorageAccountEncryptionKeySource
+* TrafficManager
+
+    * Nya övervakningsinställningar ”MonitorIntervalInSeconds”, ”MonitorTimeoutInSeconds”, ”MonitorToleratedNumberOfFailures”
+    * Nytt övervakningsprotokoll ”TCP”
+* ServiceManagement
+    * Add-AzureVhd: Storleksgränsen för VHD har ökats till 4 TB.
+    * New-AzureBGPPeering: Stöd för LegacyMode
+* Azure.Storage
+    * Uppdatera hjälp för parametrar som godkänner jokertecken och uppdatera StorageContext-typ
+
+## <a name="20170523---version-402"></a>2017.05.23 – version 4.0.2
+* Profil
+    * Add-AzureRmAccount
+      * Parameteralias `-EnvironmentName` har lagts till för bakåtkompatibilitet med 2.x-versioner av AzureRM.profile
+
+## <a name="20170512---version-401"></a>2017.05.12 – version 4.0.1
+ * Åtgärda problem med New-AzureStorageContext i offlinescenarier: https://github.com/Azure/azure-powershell/issues/3939
+
+## <a name="20170510---version-400"></a>2017.05.10 – version 4.0.0
+
 
 * Den här versionen innehåller större ändringar. Se [migreringsguiden](https://aka.ms/azps-migration-guide) för information om ändringar hur de påverkar befintliga skript.
 * ApiManagement
