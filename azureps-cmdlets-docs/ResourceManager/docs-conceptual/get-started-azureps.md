@@ -10,30 +10,29 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: get-started-article
 ms.date: 03/30/2017
-ms.openlocfilehash: 4bfa14f4f139fa8c35d4bb51ae81baea819188ce
-ms.sourcegitcommit: 226527be7cb647acfe2ea9ab151185053ab3c6db
+ms.openlocfilehash: f1c13317f0b42b547166a8130dd8c29bed5759c9
+ms.sourcegitcommit: db5c50de90764a9bdc7c1f1dbca3aed5bfeb05fa
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 08/22/2017
 ---
 # <a name="getting-started-with-azure-powershell"></a>Komma igång med Azure PowerShell
 
 Azure PowerShell har utformats för att hantera och administrera Azure-resurser från kommandoraden och för att skapa automatiseringsskript som fungerar mot Azure Resource Manager. Den här artikeln hjälper dig att komma igång med att använda det och lär dig grundbegreppen bakom.
 
-
 ## <a name="install-azure-powershell"></a>Installera Azure PowerShell
-Det första steget är att kontrollera att du har den senaste versionen av Azure PowerShell installerad.  Den senaste versionen är 4.1.0.
+
+Det första steget är att kontrollera att du har den senaste versionen av Azure PowerShell installerad. Information om den senaste versionen finns i [viktig information](./release-notes-azureps.md).
 
 1. [Installera Azure PowerShell](install-azurerm-ps.md).
-
 2. Kontrollera att installationen lyckades genom att köra `Get-Module AzureRM` från kommandoraden.
-
 
 ## <a name="log-in-to-azure"></a>Logga in på Azure
 
 Logga in interaktivt:
 
-1. Skriv `Login-AzureRmAccount`.  En dialogruta som frågar efter dina Azure-autentiseringsuppgifter visas. Med alternativet ”-EnvironmentName” kan du logga in Azure Kina eller Azure Tyskland.
+1. Skriv `Login-AzureRmAccount`. En dialogruta som frågar efter dina Azure-autentiseringsuppgifter visas. Med alternativet ”-EnvironmentName” kan du logga in Azure Kina eller Azure Tyskland.
+
    t.ex. Login-AzureRmAccount -EnvironmentName AzureChinaCloud
 
 2. Ange e-postadressen och lösenordet som är kopplade till ditt konto. Azure autentiserar och sparar autentiseringsuppgifterna och stänger sedan fönstret.
