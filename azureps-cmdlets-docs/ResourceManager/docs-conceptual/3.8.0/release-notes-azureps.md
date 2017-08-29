@@ -17,13 +17,11 @@ ms.translationtype: HT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 06/29/2017
 ---
-# <span data-ttu-id="ada1f-103">Viktig information</span><span class="sxs-lookup"><span data-stu-id="ada1f-103">Release notes</span></span>
-<a id="release-notes" class="xliff"></a>
+# <a name="release-notes"></a><span data-ttu-id="ada1f-103">Viktig information</span><span class="sxs-lookup"><span data-stu-id="ada1f-103">Release notes</span></span>
 
 <span data-ttu-id="ada1f-104">Det här är en lista över ändringar som har gjorts i Azure PowerShell i den här versionen.</span><span class="sxs-lookup"><span data-stu-id="ada1f-104">This is a list of changes made to Azure PowerShell in this release.</span></span>
 
-## <span data-ttu-id="ada1f-105">Version 3.8.0</span><span class="sxs-lookup"><span data-stu-id="ada1f-105">Version 3.8.0</span></span>
-<a id="version-380" class="xliff"></a>
+## <a name="version-380"></a><span data-ttu-id="ada1f-105">Version 3.8.0</span><span class="sxs-lookup"><span data-stu-id="ada1f-105">Version 3.8.0</span></span>
 * <span data-ttu-id="ada1f-106">Compute</span><span class="sxs-lookup"><span data-stu-id="ada1f-106">Compute</span></span>
   - <span data-ttu-id="ada1f-107">Fel i Get-*-cmdletar har åtgärdats så att det går att hämta flera sidor med data (mer än 120 objekt)</span><span class="sxs-lookup"><span data-stu-id="ada1f-107">Fix bug in Get-* cmdlets, to allow retrieving multiple pages of data (more than 120 items)</span></span>
 * <span data-ttu-id="ada1f-108">DataLakeAnalytics</span><span class="sxs-lookup"><span data-stu-id="ada1f-108">DataLakeAnalytics</span></span>

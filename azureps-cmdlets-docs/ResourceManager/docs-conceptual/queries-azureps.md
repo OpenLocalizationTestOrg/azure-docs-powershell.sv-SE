@@ -1,6 +1,6 @@
 ---
-title: "<span data-ttu-id=\"052b2-101\">Fråga efter Azure-resurser och formatera resultat | Microsoft Docs</span><span class=\"sxs-lookup\"><span data-stu-id=\"052b2-101\">Querying for Azure resources and formatting results | Microsoft Docs</span></span>"
-description: "<span data-ttu-id=\"052b2-102\">Så här frågar du efter resurser i Azure och formaterar resultaten.</span><span class=\"sxs-lookup\"><span data-stu-id=\"052b2-102\">How to query for resources in Azure and format the results.</span></span>"
+title: "Fråga efter Azure-resurser och formatera resultat | Microsoft Docs"
+description: "Så här frågar du efter resurser i Azure och formaterar resultaten."
 services: azure
 author: sdwheeler
 ms.author: sewhee
@@ -16,14 +16,12 @@ ms.translationtype: HT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 06/29/2017
 ---
-# <span data-ttu-id="052b2-103">Fråga efter Azure-resurser</span><span class="sxs-lookup"><span data-stu-id="052b2-103">Querying for Azure resources</span></span>
-<a id="querying-for-azure-resources" class="xliff"></a>
+# <a name="querying-for-azure-resources"></a><span data-ttu-id="052b2-103">Fråga efter Azure-resurser</span><span class="sxs-lookup"><span data-stu-id="052b2-103">Querying for Azure resources</span></span>
 
 <span data-ttu-id="052b2-104">Frågor i PowerShell kan utföras med hjälp av inbyggda cmdletar.</span><span class="sxs-lookup"><span data-stu-id="052b2-104">Querying in PowerShell can be completed by using built-in cmdlets.</span></span> <span data-ttu-id="052b2-105">I PowerShell har cmdlet formen **_Verb-substantiv_**.</span><span class="sxs-lookup"><span data-stu-id="052b2-105">In PowerShell, cmdlet names take the form of **_Verb-Noun_**.</span></span> <span data-ttu-id="052b2-106">Cmdletar med verbet **_Get_** är fråge-cmdletar.</span><span class="sxs-lookup"><span data-stu-id="052b2-106">The cmdlets using the verb **_Get_** are the query cmdlets.</span></span> <span data-ttu-id="052b2-107">Cmdletarnas substantiv är de typer av Azure-resurser som cmdletens verb agerar på.</span><span class="sxs-lookup"><span data-stu-id="052b2-107">The cmdlet nouns are the types of Azure resources that are acted upon by the cmdlet verbs.</span></span>
 
 
-## <span data-ttu-id="052b2-108">Välja enkla egenskaper</span><span class="sxs-lookup"><span data-stu-id="052b2-108">Selecting simple properties</span></span>
-<a id="selecting-simple-properties" class="xliff"></a>
+## <a name="selecting-simple-properties"></a><span data-ttu-id="052b2-108">Välja enkla egenskaper</span><span class="sxs-lookup"><span data-stu-id="052b2-108">Selecting simple properties</span></span>
 
 <span data-ttu-id="052b2-109">Azure PowerShell har standardformat som definierats för varje cmdlet.</span><span class="sxs-lookup"><span data-stu-id="052b2-109">Azure PowerShell has default formatting defined for each cmdlet.</span></span> <span data-ttu-id="052b2-110">De vanligaste egenskaperna för varje resurstyp visas automatiskt i tabell- eller listformat.</span><span class="sxs-lookup"><span data-stu-id="052b2-110">The most common properties for each resource type are displayed in a table or list format automatically.</span></span> <span data-ttu-id="052b2-111">Mer information om att formatera utdata finns i [Formatera frågeresultat](formatting-output.md).</span><span class="sxs-lookup"><span data-stu-id="052b2-111">For more information about formatting output, see [Formatting query results](formatting-output.md).</span></span>
 
@@ -55,8 +53,7 @@ MyUnbuntu1610 MYWESTEURG        westeurope
 MyWin2016VM   MYWESTEURG        westeurope
 ```
 
-## <span data-ttu-id="052b2-115">Välja komplexa kapslade egenskaper</span><span class="sxs-lookup"><span data-stu-id="052b2-115">Selecting complex nested properties</span></span>
-<a id="selecting-complex-nested-properties" class="xliff"></a>
+## <a name="selecting-complex-nested-properties"></a><span data-ttu-id="052b2-115">Välja komplexa kapslade egenskaper</span><span class="sxs-lookup"><span data-stu-id="052b2-115">Selecting complex nested properties</span></span>
 
 <span data-ttu-id="052b2-116">Om den egenskap du vill välja ligger djupt kapslad i JSON-utdata måste du ange den fullständiga sökvägen till den kapslade egenskapen.</span><span class="sxs-lookup"><span data-stu-id="052b2-116">If the property you want to select is nested deep in the JSON output you need to supply the full path to that nested property.</span></span> <span data-ttu-id="052b2-117">Följande exempel visar hur du väljer den virtuella datorns namn och operativsystemtyp i cmdleten `Get-AzureRmVM`.</span><span class="sxs-lookup"><span data-stu-id="052b2-117">The following example shows how to select the VM Name and the OS type from the `Get-AzureRmVM` cmdlet.</span></span>
 
@@ -71,8 +68,7 @@ MyUnbuntu1610   Linux
 MyWin2016VM   Windows
 ```
 
-## <span data-ttu-id="052b2-118">Filtrera resultatet med hjälp av cmdleten Where-Object</span><span class="sxs-lookup"><span data-stu-id="052b2-118">Filter result using the Where-Object cmdlet</span></span>
-<a id="filter-result-using-the-where-object-cmdlet" class="xliff"></a>
+## <a name="filter-result-using-the-where-object-cmdlet"></a><span data-ttu-id="052b2-118">Filtrera resultatet med hjälp av cmdleten Where-Object</span><span class="sxs-lookup"><span data-stu-id="052b2-118">Filter result using the Where-Object cmdlet</span></span>
 
 <span data-ttu-id="052b2-119">Med cmdleten `Where-Object` kan du filtrera resultatet baserat på valfritt egenskapsvärde.</span><span class="sxs-lookup"><span data-stu-id="052b2-119">The `Where-Object` cmdlet allows you to filter the result based on any property value.</span></span> <span data-ttu-id="052b2-120">I följande exempel väljer filtret endast virtuella datorer som har texten "RGD" i sina namn.</span><span class="sxs-lookup"><span data-stu-id="052b2-120">In the following example, the filter selects only VMs that have the text "RGD" in their name.</span></span>
 

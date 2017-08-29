@@ -16,8 +16,7 @@ ms.translationtype: HT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 06/29/2017
 ---
-# <span data-ttu-id="b41d6-104">Hantera flera Azure-prenumerationer</span><span class="sxs-lookup"><span data-stu-id="b41d6-104">Manage multiple Azure subscriptions</span></span>
-<a id="manage-multiple-azure-subscriptions" class="xliff"></a>
+# <a name="manage-multiple-azure-subscriptions"></a><span data-ttu-id="b41d6-104">Hantera flera Azure-prenumerationer</span><span class="sxs-lookup"><span data-stu-id="b41d6-104">Manage multiple Azure subscriptions</span></span>
 
 <span data-ttu-id="b41d6-105">Om du är nybörjare på Azure har du förmodligen bara en enda prenumeration.</span><span class="sxs-lookup"><span data-stu-id="b41d6-105">If you are brand new to Azure, you probably only have a single subscription.</span></span> <span data-ttu-id="b41d6-106">Men om du har använt Azure ett tag kanske du har skapat flera Azure-prenumerationer.</span><span class="sxs-lookup"><span data-stu-id="b41d6-106">But if you have been using Azure for a while, you may have created multiple Azure subscriptions.</span></span> <span data-ttu-id="b41d6-107">Du kan konfigurera Azure PowerShell för att köra kommandon mot en viss prenumeration.</span><span class="sxs-lookup"><span data-stu-id="b41d6-107">You can configure Azure PowerShell to execute commands against a particular subscription.</span></span>
 

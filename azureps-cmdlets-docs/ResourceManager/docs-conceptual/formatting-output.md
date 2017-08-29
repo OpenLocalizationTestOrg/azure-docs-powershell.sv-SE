@@ -1,6 +1,6 @@
 ---
-title: "<span data-ttu-id=\"59b47-101\">Formatera frågeresultat | Microsoft Docs</span><span class=\"sxs-lookup\"><span data-stu-id=\"59b47-101\">Formatting query results | Microsoft Docs</span></span>"
-description: "<span data-ttu-id=\"59b47-102\">Så här frågar du efter resurser i Azure och formaterar resultaten.</span><span class=\"sxs-lookup\"><span data-stu-id=\"59b47-102\">How to query for resources in Azure and format the results.</span></span>"
+title: "Formatera frågeresultat | Microsoft Docs"
+description: "Så här frågar du efter resurser i Azure och formaterar resultaten."
 services: azure
 author: sdwheeler
 ms.author: sewhee
@@ -16,8 +16,7 @@ ms.translationtype: HT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 06/29/2017
 ---
-# <span data-ttu-id="59b47-103">Formatera frågeresultat</span><span class="sxs-lookup"><span data-stu-id="59b47-103">Formatting query results</span></span>
-<a id="formatting-query-results" class="xliff"></a>
+# <a name="formatting-query-results"></a><span data-ttu-id="59b47-103">Formatera frågeresultat</span><span class="sxs-lookup"><span data-stu-id="59b47-103">Formatting query results</span></span>
 
 <span data-ttu-id="59b47-104">Som standard har varje PowerShell-cmdlet fördefinierad formatering av utdata, vilket gör det enklare att läsa.</span><span class="sxs-lookup"><span data-stu-id="59b47-104">By default each PowerShell cmdlet has predefined formatting of output making it easy to read.</span></span>  <span data-ttu-id="59b47-105">PowerShell ger också flexibiliteten att justera utdata eller konvertera cmdlet-utdata till ett annat format med följande cmdletar:</span><span class="sxs-lookup"><span data-stu-id="59b47-105">PowerShell also provides the flexibility to adjust the output or convert the cmdlet output to a different format with the following cmdlets:</span></span>
 
@@ -28,8 +27,7 @@ ms.lasthandoff: 06/29/2017
 | `Format-Table`  | `ConvertTo-Json` |
 | `Format-Wide`   | `ConvertTo-Xml`  |
 
-## <span data-ttu-id="59b47-108">Formateringsexempel</span><span class="sxs-lookup"><span data-stu-id="59b47-108">Formatting examples</span></span>
-<a id="formatting-examples" class="xliff"></a>
+## <a name="formatting-examples"></a><span data-ttu-id="59b47-108">Formateringsexempel</span><span class="sxs-lookup"><span data-stu-id="59b47-108">Formatting examples</span></span>
 
 <span data-ttu-id="59b47-109">I det här exemplet får vi en lista över virtuella Azure-datorer i standardprenumerationen.</span><span class="sxs-lookup"><span data-stu-id="59b47-109">In this example we get a list of Azure VMs in our default subscription.</span></span>  <span data-ttu-id="59b47-110">Kommandot Get-AzureRmVM formaterar som standard utdata i tabellformat.</span><span class="sxs-lookup"><span data-stu-id="59b47-110">The Get-AzureRmVM command defaults output into a table format.</span></span>
 
@@ -75,8 +73,7 @@ Location          : westeurope
 ResourceGroupName : MYWESTEURG
 ```
 
-## <span data-ttu-id="59b47-116">Konvertera till andra datatyper</span><span class="sxs-lookup"><span data-stu-id="59b47-116">Converting to other data types</span></span>
-<a id="converting-to-other-data-types" class="xliff"></a>
+## <a name="converting-to-other-data-types"></a><span data-ttu-id="59b47-116">Konvertera till andra datatyper</span><span class="sxs-lookup"><span data-stu-id="59b47-116">Converting to other data types</span></span>
 
 <span data-ttu-id="59b47-117">PowerShell erbjuder även flera utdataformat som du kan använda för att fylla dina behov.</span><span class="sxs-lookup"><span data-stu-id="59b47-117">PowerShell also offers multiple output format you can use to meet your needs.</span></span>  <span data-ttu-id="59b47-118">I följande exempel använder vi cmdleten `Select-Object` för att hämta attributen för de virtuella datorerna i vår prenumeration och konvertera utdata till ett CSV-format för enkel import till en databas eller ett kalkylblad.</span><span class="sxs-lookup"><span data-stu-id="59b47-118">In the following example we use the `Select-Object` cmdlet to get attributes of the virtual machines in our subscription and and convert the output to CSV format for easy import into a database or spreadsheet.</span></span>
 

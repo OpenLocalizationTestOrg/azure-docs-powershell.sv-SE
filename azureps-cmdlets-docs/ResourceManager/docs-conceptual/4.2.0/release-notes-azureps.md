@@ -1,6 +1,6 @@
 ---
-title: "<span data-ttu-id=\"21ff8-101\">Ändringslogg för Azure PowerShell | Microsoft Docs</span><span class=\"sxs-lookup\"><span data-stu-id=\"21ff8-101\">Azure PowerShell Change Log | Microsoft Docs</span></span>"
-description: "<span data-ttu-id=\"21ff8-102\">Det här är en historik över de ändringar som gjorts i den senaste versionen av Azure PowerShell.</span><span class=\"sxs-lookup\"><span data-stu-id=\"21ff8-102\">This is a history of changes made to Azure PowerShell in the latest release.</span></span>"
+title: "Ändringslogg för Azure PowerShell | Microsoft Docs"
+description: "Det här är en historik över de ändringar som gjorts i den senaste versionen av Azure PowerShell."
 services: azure
 author: sdwheeler
 ms.author: sewhee
