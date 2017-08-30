@@ -10,11 +10,11 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.manager: carmonm
 ms.date: 07/26/2017
-ms.openlocfilehash: 3772b68949dc9dba110e6015c8d2a8b944b26528
-ms.sourcegitcommit: 20bcef86db4e4869125bb63085fcffd009c19280
+ms.openlocfilehash: 02bfc15fec83ed4078d9a054b450c5a3cd66b8e2
+ms.sourcegitcommit: db5c50de90764a9bdc7c1f1dbca3aed5bfeb05fa
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/22/2017
 ---
 # <a name="overview-of-azure-powershell"></a>Översikt över Azure PowerShell
 
@@ -29,13 +29,14 @@ Med hjälp av följande exempel kan du lära dig hur du utför vanliga scenarier
 * [Web Apps](/azure/app-service-web/app-service-powershell-samples?toc=/powershell/azure/toc.json)
 * [SQL-databaser](/azure/sql-database/sql-database-powershell-samples?toc=/powershell/azure/toc.json)
 
-
 > [!NOTE] > Om du har distributioner som använder den klassiska distributionsmodellen och inte kan konverteras kan du installera Service Management-versionen av Azure PowerShell. Läs mer i informationen om hur du [installerar Azure PowerShell Service Management-modulen](/powershell/azure/servicemanagement/install-azure-ps).
-
 
 ### <a name="need-help-with-powershell"></a>Behöver du hjälp med PowerShell?
 
-Om du inte känner till PowerShell, kan du ta hjälp av en introduktion till PowerShell. Om du vill komma igång med PowerShell kan du läsa informationen i [Scripting with PowerShell](https://technet.microsoft.com/library/bb978526.aspx) (Skript med PowerShell).
+Om du inte känner till PowerShell, kan du ta hjälp av en introduktion till PowerShell.
+
+* [Installera PowerShell](/powershell/scripting/installing-windows-powershell)
+* [Köra skript med PowerShell](/powershell/scripting/scripting-with-windows-powershell)
 
 Du kan även titta på den här videon: [PowerShell Basics: (Part 1) Getting Started with PowerShell](https://channel9.msdn.com/Blogs/Taste-of-Premier/PowerShellBasicsPart1) (Grundläggande om PowerShell: (Del 1) Komma igång med PowerShell).
 

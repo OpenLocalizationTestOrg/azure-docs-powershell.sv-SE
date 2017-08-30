@@ -10,15 +10,41 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 368404bcb5218814b4965bb1bcda1e2876441d2a
-ms.sourcegitcommit: 226527be7cb647acfe2ea9ab151185053ab3c6db
+ms.openlocfilehash: 9cee582f74b7f3260c6ae167a8ac358d360ad8ab
+ms.sourcegitcommit: 45587b5091293288e16cfae8ac412e0d42f8f450
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 08/15/2017
 ---
 # <a name="other-installation-methods"></a>Andra installationsmetoder
 
 Azure PowerShell har flera olika installationsmetoder. Vi rekommenderar att du använder PowerShellGet med PowerShell-galleriet. Azure PowerShell kan installeras med installationsprogram för webbplattformen (WebPI) eller med hjälp av MSI-filen som är tillgänglig från [GitHub](https://github.com/Azure/azure-powershell/releases/latest).
+
+## <a name="docker"></a>Docker
+
+Vi underhåller en Docker-avbildning som är förkonfigurerad med Azure PowerShell.
+
+Kör behållaren med `docker run`.
+
+```powershell
+docker run azuresdk/azure-powershell
+```
+
+Dessutom underhåller vi en delmängd cmdletar som PowerShell Core-behållare.
+
+Använd `latest`-avbildningen för Mac/Linux.
+
+```bash
+docker run azuresdk/azure-powershell-core:latest
+```
+
+Använd `nanoserver`-avbildningen för Windows.
+
+```powershell
+docker run azuresdk/azure-powershell-core:nanoserver
+```
+
+Azure PowerShell är installerat på avbildningen via `Install-Module` från [PowerShell-galleriet](https://www.powershellgallery.com/).
 
 ## <a name="install-using-the-web-platform-installer"></a>Installera med hjälp av installationsprogrammet för webbplattformen
 

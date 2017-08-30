@@ -35,7 +35,7 @@ Det här är en lista över ändringar som har gjorts i Azure PowerShell i den h
   * Add-AzureAnalysisServicesAccount som stöd för inloggning med tjänstens huvudnamn
 * Automation
   * Ändringar har gjorts av AutomationDSC*-cmdletar för att hämta över 100 poster
-  * Har löst problemet med att utförliga strömmar slutar fungera efter anrop av Automation-cmdletar (till exempel Get-AzureRmAutomationVariable, Get-AzureRmAutomationJob).
+  * Har löst problemet med att utförliga strömmar slutade fungera efter anrop av Automation-cmdletar (till exempel Get-AzureRmAutomationVariable, Get-AzureRmAutomationJob).
   * Stöd för versionshantering av NodeConfiguration-version har lagts till i StartAzureAutomationDscCompilationJob och ImportAzureAutomationDscNodeConfiguration
   * Korrigering av programfel för befintliga problem – Problemet med alias #3775 och runOn-alias och stöd för HybridWorkers har åtgärdats.
 * Compute
