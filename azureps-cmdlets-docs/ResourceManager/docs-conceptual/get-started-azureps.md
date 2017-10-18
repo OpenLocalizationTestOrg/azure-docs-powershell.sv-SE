@@ -9,22 +9,41 @@ ms.product: azure
 ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: get-started-article
-ms.date: 03/30/2017
-ms.openlocfilehash: f1c13317f0b42b547166a8130dd8c29bed5759c9
-ms.sourcegitcommit: db5c50de90764a9bdc7c1f1dbca3aed5bfeb05fa
+ms.date: 08/31/2017
+ms.openlocfilehash: 2cd3fc8e955ae826471dceee79d5e6b70070d416
+ms.sourcegitcommit: e6b7e20bbd04eda51416c56b13f867102b602d1a
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 10/07/2017
 ---
 # <a name="getting-started-with-azure-powershell"></a>Komma igång med Azure PowerShell
 
-Azure PowerShell har utformats för att hantera och administrera Azure-resurser från kommandoraden och för att skapa automatiseringsskript som fungerar mot Azure Resource Manager. Den här artikeln hjälper dig att komma igång med att använda det och lär dig grundbegreppen bakom.
+Azure PowerShell har utformats för att hantera och administrera Azure-resurser från kommandoraden och för att skapa automatiseringsskript som fungerar mot Azure Resource Manager. Du kan använda det i webbläsaren med [Azure Cloud Shell](/azure/cloud-shell/overview) eller installera det på din lokala dator och använda det i PowerShell-sessioner. Den här artikeln hjälper dig att komma igång med att använda det och lär dig grundbegreppen bakom.
+
+## <a name="connect"></a>Anslut
+
+Det enklaste sättet att komma igång är att [starta Cloud Shell](/azure/cloud-shell/quickstart).
+
+1. Starta Cloud Shell från det övre navigeringsfältet i Azure Portal.
+
+   ![Shell-ikon](~/media/get-started-azureps/shell-icon.png)
+
+2. Välj den prenumeration du vill använda och skapa ett lagringskonto.
+
+   ![skapar ett lagringskonto](~/media/get-started-azureps/storage-prompt.png)
+
+När du har skapat din lagring öppnar Cloud Shell en PowerShell-session i webbläsaren.
+
+![Cloud Shell för PowerShell](~/media/get-started-azureps/cloud-powershell.png)
+
+Du kan även installera Azure PowerShell och använda det lokalt i en PowerShell-session.
 
 ## <a name="install-azure-powershell"></a>Installera Azure PowerShell
 
 Det första steget är att kontrollera att du har den senaste versionen av Azure PowerShell installerad. Information om den senaste versionen finns i [viktig information](./release-notes-azureps.md).
 
 1. [Installera Azure PowerShell](install-azurerm-ps.md).
+
 2. Kontrollera att installationen lyckades genom att köra `Get-Module AzureRM` från kommandoraden.
 
 ## <a name="log-in-to-azure"></a>Logga in på Azure
@@ -51,7 +70,7 @@ Vi ska skapa en resursgrupp med namnet "MyResourceGroup" i den västeuropeiska r
 New-AzureRmResourceGroup -Name 'myResourceGroup' -Location 'westeurope'
 ```
 
-```
+```Output
 ResourceGroupName : myResourceGroup
 Location          : westeurope
 ProvisioningState : Succeeded
@@ -123,7 +142,7 @@ New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfi
 
 Kommandot `New-AzureRmVM` ger resultat när den virtuella datorn har skapats färdigt och är redo att användas.
 
-```
+```Output
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 --------- ------------------- ---------- ------------
                          True         OK OK
@@ -135,7 +154,7 @@ Logga nu in på den virtuella Windows Server-dator som har skapats med hjälp av
 $publicIp | Select-Object Name,IpAddress
 ```
 
-```
+```Output
 Name                  IpAddress
 ----                  ---------
 mypublicdns1400512543 xx.xx.xx.xx
@@ -143,12 +162,11 @@ mypublicdns1400512543 xx.xx.xx.xx
 
 Om du använder ett Windows-baserat system kan du göra detta från kommandoraden med mstsc-kommandot:
 
-```
+```powershell
 mstsc /v:xx.xxx.xx.xxx
 ```
 
 Ange samma kombination av användarnamn/lösenord för att logga in som du använde när du skapade den virtuella datorn.
-
 
 ## <a name="create-a-linux-virtual-machine"></a>Skapa en virtuell Linux-dator
 
@@ -219,7 +237,7 @@ Nu när den virtuella datorn har skapats kan du logga in på den nya virtuella L
 ssh xx.xxx.xxx.xxx
 ```
 
-```
+```Output
 Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.19.0-65-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com/
@@ -247,7 +265,7 @@ individual files in /usr/share/doc/*/copyright.
 Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 applicable law.
 
-my-login@MyLinuxVM:~$
+my-login@MyLinuxVM:../../..$
 ```
 
 ## <a name="creating-other-resources-in-azure"></a>Skapa andra resurser i Azure
@@ -291,7 +309,7 @@ Get-AzureRmResource |
     Select-Object Name,Location,ResourceType
 ```
 
-```
+```Output
 Name                                                  Location   ResourceType
 ----                                                  --------   ------------
 myLinuxVM_OsDisk_1_36ca038791f642ba91270879088c249a   westeurope Microsoft.Compute/disks
@@ -320,7 +338,7 @@ Remove-AzureRmVM -Name myWindowsVM -ResourceGroupName myResourceGroup
 
 Du uppmanas att bekräfta att du vill ta bort resursen.
 
-```
+```Output
 Confirm
 Are you sure you want to remove resource group 'myResourceGroup'
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -332,7 +350,7 @@ Du kan också ta bort många resurser i taget. Följande kommando tar till exemp
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-```
+```Output
 Confirm
 Are you sure you want to remove resource group 'myResourceGroup'
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -351,5 +369,5 @@ Om du vill lära dig mer om att använda Azure PowerShell kan du ta en titt på 
 * [Skapa tjänstens huvudnamn i Azure med Azure PowerShell](create-azure-service-principal-azureps.md)
 * Läs den viktiga informationen om att migrera från en äldre version: [https://github.com/Azure/azure-powershell/tree/dev/documentation/release-notes](https://github.com/Azure/azure-powershell/tree/dev/documentation/release-notes).
 * Få hjälp från communityn:
-  + [Azure-forumet på MSDN](http://go.microsoft.com/fwlink/p/?LinkId=320212)
-  + [stackoverflow](http://go.microsoft.com/fwlink/?LinkId=320213)
+  * [Azure-forumet på MSDN](http://go.microsoft.com/fwlink/p/?LinkId=320212)
+  * [stackoverflow](http://go.microsoft.com/fwlink/?LinkId=320213)
