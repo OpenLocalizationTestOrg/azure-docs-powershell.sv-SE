@@ -10,11 +10,11 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 09/05/2017
-ms.openlocfilehash: 4a8a74977440fa89b89843bbc95e43d622a58474
-ms.sourcegitcommit: e6b7e20bbd04eda51416c56b13f867102b602d1a
+ms.openlocfilehash: 7a01957040be7c0498ef4f0e9b8f7297119221a5
+ms.sourcegitcommit: 9d2d35944106bdb6758853b050089bc804e6b9d2
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/07/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="using-experimental-azure-powershell-modules"></a>Använda experimentella Azure PowerShell-moduler
 
@@ -35,7 +35,20 @@ Namngivningskonventionen liknar namngivningen i förhandsversionsmoduler: `Azure
 
 ## <a name="how-to-install-an-experimental-module"></a>Så här installerar du en experimentell modul
 
-Experimentella moduler publiceras i PowerShell-galleriet precis som de befintliga Azure PowerShell-modulerna. Om du vill installera den experimentella modulen ska du använda följande kommandon från en upphöjd PowerShell-session:
+Experimentella moduler publiceras i PowerShell-galleriet precis som de befintliga Azure PowerShell-modulerna. Om du vill se en lista med experimentella moduler kör du följande kommando:
+
+```powershell
+Find-Module AzureRM.*.Experiments
+```
+
+```Output
+Version    Name                                Repository           Description
+-------    ----                                ----------           -----------
+1.0.0      AzureRM.Websites.Experiments        PSGallery            Create and deploy web applications using Azure Ap...
+1.0.25     AzureRM.Compute.Experiments         PSGallery            Azure Compute experiments for VM creation
+```
+
+Om du vill installera den experimentella modulen ska du använda följande kommandon från en upphöjd PowerShell-session:
 
 ```powershell
 Install-Module AzureRM.Compute.Experiments
@@ -104,8 +117,14 @@ $job = New-AzVm -Name MyVm -AsJob
 Receive-Job $job
 ```
 
-### <a name="send-us-feedback"></a>Skicka oss din feedback
+### <a name="send-us-feedback"></a>Skicka feedback
 
 ```powershell
 Send-Feedback
+```
+
+### <a name="uninstall-the-experimental-modules"></a>Avinstallera de experimentella modulerna
+
+```powershell
+Uninstall-Module AzureRM.Compute.Experiments
 ```
