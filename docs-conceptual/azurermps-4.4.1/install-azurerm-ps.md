@@ -9,14 +9,17 @@ ms.product: azure
 ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 05/17/2017
-ms.openlocfilehash: 0c1500a8748a3aa4546c6ce1e8d16a635b056edb
+ms.date: 08/31/2017
+ms.openlocfilehash: 0e560332c87fdcc8b7365f2271de24481003a4d6
 ms.sourcegitcommit: b256bf48e15ee98865de0fae50e7b81878b03a54
 ms.translationtype: HT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 11/03/2017
 ---
 # <a name="install-and-configure-azure-powershell"></a>Installera och konfigurera Azure PowerShell
+
+Den här artikeln beskriver stegen för att installera Azure PowerShell-moduler i en Windows-miljö.
+Läs följande artikel om du vill använda Azure PowerShell på macOS eller Linux: [Installera och konfigurera Azure PowerShell på macOS och Linux](install-azurermps-maclinux.md).
 
 Det rekommenderade sättet att installera Azure PowerShell är från PowerShell-galleriet.
 
@@ -30,7 +33,7 @@ Get-Module PowerShellGet -list | Select-Object Name,Version,Path
 
 Nu bör du se utdata som ser ut ungefär så här:
 
-```
+```Output
 Name          Version Path
 ----          ------- ----
 PowerShellGet 1.0.0.1 C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\1.0.0.1\PowerShellGet.psd1
@@ -39,7 +42,7 @@ PowerShellGet 1.0.0.1 C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\1
 Om du inte har installerat PowerShellGet kan du läsa avsnittet [Hämta PowerShellGet](#how-to-get-powershellget) i den här artikeln.
 
 > [!NOTE]
-> För att kunna använda PowerShellGet, krävs en körningsprincip som låter dig köra skript. Mer information om PowerShell-körningsprincipen finns i [Om körningsprinciper](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/about/about_execution_policies).
+> För att kunna använda PowerShellGet, krävs en körningsprincip som låter dig köra skript. Mer information om PowerShell-körningsprincipen finns i [Om körningsprinciper](/powershell/module/microsoft.powershell.core/about/about_execution_policies).
 
 ## <a name="step-2-install-azure-powershell"></a>Steg 2: Installera Azure PowerShell
 
@@ -47,12 +50,12 @@ För installation av Azure PowerShell från PowerShell-galleriet krävs utökade
 
 ```powershell
 # Install the Azure Resource Manager modules from the PowerShell Gallery
-Install-Module AzureRM
+Install-Module AzureRM -AllowClobber
 ```
 
 Som standard konfigureras inte PowerShell-galleriet som en betrodd lagringsplats för PowerShellGet. Första gången du använder PSGallery visas följande meddelande:
 
-```
+```Output
 Untrusted repository
 
 You are installing the modules from an untrusted repository. If you trust this repository, change
@@ -84,6 +87,10 @@ Mer information om hur du använder Azure PowerShell finns i följande artiklar:
 
 * [Kom igång med Azure PowerShell](get-started-azureps.md)
 
+## <a name="reporting-issues-and-feedback"></a>Rapportera problem och feedback
+
+Om du stöter på några buggar med verktyget kan du rapportera problemet i [problem](https://github.com/Azure/azure-powershell/issues)-delen av vårt GitHub-repo. Om du vill ge feedback från kommandoraden, använder du cmdleten `Send-Feedback`.
+
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 
 ### <a name="how-to-get-powershellget"></a>Hämta PowerShellGet
@@ -97,7 +104,7 @@ Mer information om hur du använder Azure PowerShell finns i följande artiklar:
 <a id="helpmechoose"></a>
 ### <a name="checking-the-version-of-azure-powershell"></a>Kontrollera Azure PowerShell-versionen
 
-Flera versioner av Azure PowerShell stöds, men vi rekommenderar att du uppgraderar till den senaste versionen så snabbt som möjligt. Om du vill kontrollera vilken version av Azure PowerShell som du har installerat kör du `Get-Module AzureRM` från kommandoraden.
+Det finns stöd för flera versioner av Azure PowerShell, men vi rekommenderar att du uppgraderar till den senaste versionen så snart som möjligt. Om du vill kontrollera vilken version av Azure PowerShell som du har installerat kör du `Get-Module AzureRM` från kommandoraden.
 
 ```powershell
 Get-Module AzureRM -list | Select-Object Name,Version,Path
@@ -111,7 +118,7 @@ Om du har distributioner som använder den klassiska distributionsmodellen så k
 
 Om du har en tidigare version av Azure PowerShell installerad som innehåller tjänsthanteringsmodulen, kan följande felmeddelande komma upp:
 
-```
+```Output
 PackageManagement\Install-Package : A command with name 'Get-AzureStorageContainerAcl' is already
 available on this system. This module 'Azure.Storage' may override the existing commands. If you
 still want to install this module 'Azure.Storage', use -AllowClobber parameter.
