@@ -1,20 +1,4 @@
----
-title: "Komma igång med Azure PowerShell | Microsoft Docs"
-description: 
-services: azure
-author: sdwheeler
-ms.author: sewhee
-manager: carmonm
-ms.product: azure
-ms.service: azure-powershell
-ms.devlang: powershell
-ms.topic: get-started-article
-ms.date: 08/31/2017
-ms.openlocfilehash: 2cd3fc8e955ae826471dceee79d5e6b70070d416
-ms.sourcegitcommit: b256bf48e15ee98865de0fae50e7b81878b03a54
-ms.translationtype: HT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2017
+-- title: Komma igång med Azure PowerShell | Microsoft Docs beskrivning: tjänster: azure-upphovsman: sdwheeler ms.author: sewhee manager: carmonm ms.product: azure ms.service: azure-powershell ms.devlang: powershell ms.topic: get-started-article ms.date: 2017-08-31
 ---
 # <a name="getting-started-with-azure-powershell"></a>Komma igång med Azure PowerShell
 
@@ -26,15 +10,15 @@ Det enklaste sättet att komma igång är att [starta Cloud Shell](/azure/cloud-
 
 1. Starta Cloud Shell från det övre navigeringsfältet i Azure Portal.
 
-   ![Shell-ikon](~/media/get-started-azureps/shell-icon.png)
+   ![Shell-ikon](/media/get-started-azureps/shell-icon.png)
 
 2. Välj den prenumeration du vill använda och skapa ett lagringskonto.
 
-   ![skapar ett lagringskonto](~/media/get-started-azureps/storage-prompt.png)
+   ![skapar ett lagringskonto](/media/get-started-azureps/storage-prompt.png)
 
 När du har skapat din lagring öppnar Cloud Shell en PowerShell-session i webbläsaren.
 
-![Cloud Shell för PowerShell](~/media/get-started-azureps/cloud-powershell.png)
+![Cloud Shell för PowerShell](/media/get-started-azureps/cloud-powershell.png)
 
 Du kan även installera Azure PowerShell och använda det lokalt i en PowerShell-session.
 
