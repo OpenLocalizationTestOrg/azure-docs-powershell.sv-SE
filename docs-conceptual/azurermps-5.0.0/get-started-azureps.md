@@ -1,4 +1,4 @@
--- title: Komma igång med Azure PowerShell | Microsoft Docs beskrivning: tjänster: azure-upphovsman: sdwheeler ms.author: sewhee manager: carmonm ms.product: azure ms.service: azure-powershell ms.devlang: powershell ms.topic: get-started-article ms.date: 2017-08-31
+-- title: Komma igång med Azure PowerShell | Microsoft Docs-beskrivning: tjänster: azure-upphovsman: sdwheeler ms.author: sewhee manager: carmonm ms.product: azure ms.service: azure-powershell ms.devlang: powershell ms.topic: get-started-article ms.date: 2017-11-15
 ---
 # <a name="getting-started-with-azure-powershell"></a>Komma igång med Azure PowerShell
 
@@ -28,7 +28,7 @@ Det första steget är att kontrollera att du har den senaste versionen av Azure
 
 1. [Installera Azure PowerShell](install-azurerm-ps.md).
 
-2. Kontrollera att installationen lyckades genom att köra `Get-Module AzureRM` från kommandoraden.
+2. Kontrollera att installationen lyckades genom att köra `Get-Module AzureRM -ListAvailable` från kommandoraden.
 
 ## <a name="log-in-to-azure"></a>Logga in på Azure
 
