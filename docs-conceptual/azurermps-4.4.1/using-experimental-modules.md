@@ -10,11 +10,11 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 09/05/2017
-ms.openlocfilehash: 7a01957040be7c0498ef4f0e9b8f7297119221a5
-ms.sourcegitcommit: c42c7176276ec4e1cc3360a93e6b15d32083bf9f
+ms.openlocfilehash: c11e4503c07b0a0c4a71021bc511da723098188e
+ms.sourcegitcommit: 42bfd513fe646494d3d9eb0cfc35b049f7e1fbb7
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="using-experimental-azure-powershell-modules"></a>Använda experimentella Azure PowerShell-moduler
 
@@ -26,12 +26,7 @@ För att underlätta experimenteringen skapar vi nya Azure PowerShell-moduler so
 
 Dessa moduler kan vara installerade sida vid sida med befintliga Azure PowerShell-moduler. Cmdlet-namnen har kortats ned för att få kortare namn och undvika namnkonflikter med befintliga, icke-experimentella cmdletar.
 
-De experimentella modulerna använder följande namngivningskonvention:
-
-- AzureRM.Compute.Experiments
-- AzureRM.Websites.Experiments
-
-Namngivningskonventionen liknar namngivningen i förhandsversionsmoduler: `AzureRM.*.Preview`. Förhandsversionsmoduler skiljer sig från experimentella moduler. Förhandsversionsmoduler implementerar nya funktioner i Azure-tjänster som endast är tillgängliga som en förhandsversion. Förhandsversionsmoduler ersätter befintliga Azure PowerShell-moduler och använder samma cmdlet- och parameternamn.
+De experimentella modulerna använder följande namngivningskonvention: `AzureRM.*.Experiments`. Namngivningskonventionen liknar namngivningen i förhandsversionsmoduler: `AzureRM.*.Preview`. Förhandsversionsmoduler skiljer sig från experimentella moduler. Förhandsversionsmoduler implementerar nya funktioner i Azure-tjänster som endast är tillgängliga som en förhandsversion. Förhandsversionsmoduler ersätter befintliga Azure PowerShell-moduler och använder samma cmdlet- och parameternamn.
 
 ## <a name="how-to-install-an-experimental-module"></a>Så här installerar du en experimentell modul
 
@@ -42,10 +37,10 @@ Find-Module AzureRM.*.Experiments
 ```
 
 ```Output
-Version    Name                                Repository           Description
--------    ----                                ----------           -----------
-1.0.0      AzureRM.Websites.Experiments        PSGallery            Create and deploy web applications using Azure Ap...
-1.0.25     AzureRM.Compute.Experiments         PSGallery            Azure Compute experiments for VM creation
+Version Name                         Repository Description
+------- ----                         ---------- -----------
+1.0.25  AzureRM.Compute.Experiments  PSGallery  Azure Compute experiments for VM creation
+1.0.0   AzureRM.Websites.Experiments PSGallery  Create and deploy web applications using Azure App Services.
 ```
 
 Om du vill installera den experimentella modulen ska du använda följande kommandon från en upphöjd PowerShell-session:
@@ -74,7 +69,7 @@ Grundläggande förbättringar räknas som ”sunt förnuft” och lite experime
 
 - Kortare namn – Omfattar namnen på cmdletar (till exempel `New-AzureRmVM` => `New-AzVm`) och parameternamnen (till exempel `-ResourceGroupName` => `-Rg`). Använd alias för kompatibilitet med ”gamla” cmdletar. Tillhandahåll _bakåtkompatibla_ parameteruppsättningar.
 
-- Smarta standardvärden – Skapa smarta standardvärden för att fylla i ”obligatorisk” information. Exempel:
+- Smarta standardvärden – Skapa smarta standardvärden för att fylla i ”obligatorisk” information. Till exempel:
   - Resursgrupp
   - Plats
   - Beroende resurser
@@ -101,30 +96,3 @@ Scenariet ”Skapa webbapp” skulle till exempel kunna ha en `-Git`- eller `-Ad
 - Storleksstandard – Resursers ”storlekar” kan vara förvirrande för användarna eftersom många resursproviders använder olika namn (till exempel ”Standard\_DS1\_v2” eller ”S1”). Dock är de flesta användare mer intresserade av kostnaden. Därför vore det praktiskt att definiera ”universella” storlekar utifrån ett prissättningsschema. Användare kan välja en viss storlek eller låta Azure PowerShell välja det _bästa alternativet_ utifrån resursbudgeten.
 
 - Utdataformat – Azure PowerShell returnerar för närvarande `PSObject` och det finns lite konsolutdata. Azure PowerShell kanske behöver visa en del information för användaren om vilka ”smarta standardvärden” som används.
-
-## <a name="try-using-the-experiments"></a>Testa att använda experimenten
-
-### <a name="install"></a>Installera
-
-```powershell
-Install-Module AzureRM.Compute.Experiments
-```
-
-### <a name="create-a-vm"></a>Skapa en virtuell dator
-
-```powershell
-$job = New-AzVm -Name MyVm -AsJob
-Receive-Job $job
-```
-
-### <a name="send-us-feedback"></a>Skicka feedback
-
-```powershell
-Send-Feedback
-```
-
-### <a name="uninstall-the-experimental-modules"></a>Avinstallera de experimentella modulerna
-
-```powershell
-Uninstall-Module AzureRM.Compute.Experiments
-```
