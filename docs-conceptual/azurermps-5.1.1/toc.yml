@@ -33,10 +33,12 @@
           href: /azure/azure-resource-manager/resource-manager-export-template-powershell
         - name: Distribuera en privat Resource Manager-mall med SAS-token
           href: /azure/azure-resource-manager/resource-manager-powershell-sas-token
-    - name: Koncept
+    - name: Begrepp
       items:
         - name: Använda experimentella moduler
           href: using-experimental-modules.md
+        - name: Kör cmdletar parallellt med hjälp av PowerShell-jobb
+          href: using-psjobs.md
     - name: Viktig information
       href: release-notes-azureps.md
 - name: Exempelskript
