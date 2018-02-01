@@ -11,10 +11,10 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/31/2017
 ms.openlocfilehash: 8ef20796b64b16c78a653e293a57d5e752d89710
-ms.sourcegitcommit: c42c7176276ec4e1cc3360a93e6b15d32083bf9f
+ms.sourcegitcommit: 72f56597f0329d35779a3ea4ccea6293f0fd2502
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="persisting-user-logins-across-powershell-sessions"></a>Bevara användarinloggningar mellan PowerShell-sessioner
 
@@ -83,7 +83,7 @@ PS C:\> Set-AzureRMContext -Subscription "Contoso Subscription 1" -Name "Contoso
 
 I exemplet ovan läggs en ny kontext till med målet ”Contoso Subscription 1” med hjälp av dina aktuella autentiseringsuppgifter. Den nya kontexten har namnet ”Contoso1”. Om du inte anger ett namn för kontexten används ett standardnamn med konto-ID och prenumerations-ID.
 
-Byt namn på en befintlig kontext genom att använda cmdlet `Rename-AzureRmContext`. Exempel:
+Byt namn på en befintlig kontext genom att använda cmdlet `Rename-AzureRmContext`. Till exempel:
 
 ```powershell
 PS C:\> Rename-AzureRmContext '[user1@contoso.org; 123456-7890-1234-564321]` 'Contoso2'
@@ -91,7 +91,7 @@ PS C:\> Rename-AzureRmContext '[user1@contoso.org; 123456-7890-1234-564321]` 'Co
 
 Det här exemplet byter namn på kontexten med det automatiska namnet `[user1@contoso.org; 123456-7890-1234-564321]` till ”Contoso2”. Cmdletar som hanterar kontexter använder också tabbifyllning, så att du snabbt kan välja kontexten.
 
-Slutligen, för att ta bort en kontext använder du cmdlet `Remove-AzureRmContext`.  Exempel:
+Slutligen, för att ta bort en kontext använder du cmdlet `Remove-AzureRmContext`.  Till exempel:
 
 ```powershell
 PS C:\> Remove-AzureRmContext Contoso2

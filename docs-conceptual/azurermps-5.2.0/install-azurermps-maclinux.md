@@ -11,15 +11,15 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: 64a86dfd4af7f3f0a91501e9a096ff190f7100cb
-ms.sourcegitcommit: d320fd5a2f468445c9e5aaa8d28dc363ece12ffc
+ms.sourcegitcommit: 72f56597f0329d35779a3ea4ccea6293f0fd2502
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="install-and-configure-azure-powershell-on-macos-and-linux"></a>Installera och konfigurera Azure PowerShell på macOS och Linux
 
 Nu är det möjligt att installera PowerShell Core v6 och Azure PowerShell på andra plattformar än Windows-plattformar.
-Processen för att installera Azure PowerShell på macOS och Linux är ungefär samma som för Windows, men du måste först installera PowerShell Core v6.
+Processen för att installera Azure PowerShell på macOS och Linux är ungefär densamma som för Windows, men du måste först installera PowerShell Core v6.
 
 > [!NOTE]
 
@@ -31,7 +31,7 @@ Processen för att installera Azure PowerShell på macOS och Linux är ungefär 
 
 ## <a name="step-1-install-powershell-core-v6"></a>Steg 1: Installera PowerShell Core v6
 
-Processen för att installera PowerShell Core v6 varierar beroende på måloperativsystemet.
+Processen för att installera PowerShell Core v6 varierar beroende på måloperativsystem.
 Det går att installera PowerShell Core v6 på Windows, men den här artikeln handlar om macOS och Linux. Om du vill använda Azure PowerShell på Windows kan du läsa artikeln om att [installera](./install-azurerm-ps.md) på Windows.
 
 Processen för att installera **PowerShell Core v6** på Linux och macOS varierar beroende på Linux-distribution och operativsystemsversion.
