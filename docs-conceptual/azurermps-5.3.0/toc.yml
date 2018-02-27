@@ -37,6 +37,8 @@
       items:
         - name: Använda experimentella moduler
           href: using-experimental-modules.md
+        - name: PowerShell-jobb
+          href: using-psjobs.md
     - name: Viktig information
       href: release-notes-azureps.md
       items:
