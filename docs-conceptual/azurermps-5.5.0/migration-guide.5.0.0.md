@@ -388,7 +388,7 @@ $consumergroup = Get-AzureRmEventHubConsumerGroup <parameters>
 
 ### <a name="add-azurermlogalertrule"></a>**Add-AzureRMLogAlertRule**
 - Cmdleten **Add-AzureRMLogAlertRule** har gjorts inaktuell
-- Efter den 1 oktober kommer den här cmdleten inte längre att ha någon effekt eftersom den här funktionen kommer att övergå till aktivitetsloggaviseringar. Mer information finns på https://aka.ms/migratemealerts.
+- Efter den 1 oktober kommer den här cmdleten inte längre att ha någon effekt eftersom den här funktionen kommer att övergå till aktivitetsloggaviseringar. Mer information finns i https://aka.ms/migratemealerts.
 
 ### <a name="get-azurermusage"></a>**Get-AzureRMUsage**
 - Cmdleten **Get-AzureRMUsage** har gjorts inaktuell
