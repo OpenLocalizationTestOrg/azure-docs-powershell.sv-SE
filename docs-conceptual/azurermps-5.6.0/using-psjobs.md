@@ -10,11 +10,11 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 12/11/2017
-ms.openlocfilehash: 0a445a7db84c8deb6518b826b4096983669c5961
-ms.sourcegitcommit: 15bf69bf95eceb936b3a429e741add95c308826a
+ms.openlocfilehash: dfc1efa752c9c9fa42ad5904adacd83c2dc333b8
+ms.sourcegitcommit: 8376e0bc5f862d382d7283ba72990e3707591e7b
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="running-cmdlets-in-parallel-using-powershell-jobs"></a>Kör cmdletar parallellt med hjälp av PowerShell-jobb
 
@@ -23,7 +23,7 @@ Azure PowerShell är kraftigt beroende av att utföra och vänta på nätverksan
 
 ## <a name="context-persistence-and-psjobs"></a>Sammanhangsbeständighet och PSJobs
 
-PSJobs körs i separata processer, vilket innebär att information om Azure-anslutningen måste delas korrekt med de jobb som du skapar. Vid anslutning av ditt Azure-konto till PowerShell-sessionen med `Login-AzureRmAccount` kan du överföra sammanhanget till ett jobb.
+PSJobs körs i separata processer, vilket innebär att information om Azure-anslutningen måste delas korrekt med de jobb som du skapar. Vid anslutning av ditt Azure-konto till PowerShell-sessionen med `Connect-AzureRmAccount` kan du överföra sammanhanget till ett jobb.
 
 ```powershell
 $creds = Get-Credential

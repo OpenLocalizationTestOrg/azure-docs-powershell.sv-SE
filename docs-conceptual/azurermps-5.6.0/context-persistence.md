@@ -10,11 +10,11 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/31/2017
-ms.openlocfilehash: 8ef20796b64b16c78a653e293a57d5e752d89710
-ms.sourcegitcommit: 15bf69bf95eceb936b3a429e741add95c308826a
+ms.openlocfilehash: 4b2b3b690a8c5d6951b24d49091154c6fb479fe3
+ms.sourcegitcommit: 8376e0bc5f862d382d7283ba72990e3707591e7b
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="persisting-user-logins-across-powershell-sessions"></a>Bevara användarinloggningar mellan PowerShell-sessioner
 
@@ -73,7 +73,7 @@ När du behöver veta resultatet av en bakgrundsaktivitet kan du använda `Get-J
 
 ## <a name="creating-selecting-renaming-and-removing-contexts"></a>Skapa, välja, byta namn på och ta bort kontexter
 
-Om du vill skapa en kontext måste du vara inloggad i Azure. Med cmdleten `Add-AzureRmAccount` (eller dess alias `Login-AzureRmAccount`) anger du standardkontexten som används av efterföljande Azure PowerShell-cmdletar och kan komma åt alla klienter eller prenumerationer som tillåts med dina inloggningsuppgifter.
+Om du vill skapa en kontext måste du vara inloggad i Azure. Med cmdleten `Connect-AzureRmAccount` (eller dess alias `Login-AzureRmAccount`) anger du standardkontexten som används av efterföljande Azure PowerShell-cmdletar och kan komma åt alla klienter eller prenumerationer som tillåts med dina inloggningsuppgifter.
 
 Om du vill lägga till en ny kontext efter inloggningen ska du använda `Set-AzureRmContext` (eller dess alias `Select-AzureRmSubscription`).
 

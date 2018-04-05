@@ -10,11 +10,11 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 1af5aeffb8e87e916df3e2440a84805935136c0f
-ms.sourcegitcommit: 15bf69bf95eceb936b3a429e741add95c308826a
+ms.openlocfilehash: f07dee0eed106e39879d58ae06ff08b787faa531
+ms.sourcegitcommit: 8376e0bc5f862d382d7283ba72990e3707591e7b
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="log-in-with-azure-powershell"></a>Logga in med Azure PowerShell
 
@@ -22,7 +22,7 @@ Azure PowerShell har stöd för flera inloggningsmetoder. Det är enklast att ko
 
 ## <a name="interactive-log-in"></a>Interaktiv inloggning
 
-1. Skriv `Login-AzureRmAccount`. En dialogruta som frågar efter dina Azure-autentiseringsuppgifter visas.
+1. Skriv `Connect-AzureRmAccount`. En dialogruta som frågar efter dina Azure-autentiseringsuppgifter visas.
 
 2. Ange e-postadressen och lösenordet som är kopplade till ditt konto. Azure autentiserar och sparar autentiseringsuppgifterna och stänger sedan fönstret.
 
@@ -35,7 +35,7 @@ Tjänstens huvudnamn ger dig ett sätt att skapa icke-interaktiva konton som du 
 2. Logga in med huvudnamnet för tjänsten.
 
     ```powershell
-    Login-AzureRmAccount -ServicePrincipal -ApplicationId  "http://my-app" -Credential $pscredential -TenantId $tenantid
+    Connect-AzureRmAccount -ServicePrincipal -ApplicationId  "http://my-app" -Credential $pscredential -TenantId $tenantid
     ```
 
     För att få ditt TenantId loggar du in interaktivt och hämtar sedan ditt TenantId från prenumerationen.
@@ -64,7 +64,7 @@ Läs mer om [hur du använder en hanterad tjänstidentitet för Azure VM för at
 Azure-molntjänster erbjuder olika miljöer som följer olika myndigheters regler för datahantering. Om ditt Azure-konto finns i ett myndighetsmoln, behöver du specificera miljön när du loggar in. Om ditt konto till exempel befinner sig i Kina-molnet, loggar du in med följande kommando:
 
 ```powershell
-Login-AzureRmAccount -EnvironmentName AzureChinaCloud
+Connect-AzureRmAccount -Environment AzureChinaCloud
 ```
 
 Använd följande kommando för att få en lista över tillgängliga miljöer:
