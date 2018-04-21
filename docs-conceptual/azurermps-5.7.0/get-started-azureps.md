@@ -10,11 +10,11 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: get-started-article
 ms.date: 11/15/2017
-ms.openlocfilehash: 5f1bd0c780b027b2b5779c70fa3145c5dfdc3bb4
-ms.sourcegitcommit: 4ebdeea3c472d94c1aedb10b9d85bf2e76826e83
+ms.openlocfilehash: 12446697e57cc0a76b94309c2338239c16c7f580
+ms.sourcegitcommit: 5f0013981fcea1d689649b9a2b2ffe84ae842e56
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="getting-started-with-azure-powershell"></a>Komma igång med Azure PowerShell
 
@@ -50,19 +50,109 @@ Det första steget är att kontrollera att du har den senaste versionen av Azure
 
 Logga in interaktivt:
 
-1. Skriv `Login-AzureRmAccount`. En dialogruta som frågar efter dina Azure-autentiseringsuppgifter visas. Med alternativet ”-EnvironmentName” kan du logga in Azure Kina eller Azure Tyskland.
+1. Skriv `Connect-AzureRmAccount`. En dialogruta som frågar efter dina Azure-autentiseringsuppgifter visas. Med alternativet "-Environment" kan du tillåtas att logga in i Azure Kina eller Azure Tyskland.
 
-   t.ex. Login-AzureRmAccount -EnvironmentName AzureChinaCloud
+   t.ex. Connect-AzureRmAccount -Environment AzureChinaCloud
 
 2. Ange e-postadressen och lösenordet som är kopplade till ditt konto. Azure autentiserar och sparar autentiseringsuppgifterna och stänger sedan fönstret.
 
 När du har loggat in på ett Azure-konto kan du använda Azure PowerShell-cmdletar för att komma åt och hantera resurserna i prenumerationen.
 
-## <a name="create-a-resource-group"></a>Skapa en resursgrupp
+## <a name="create-a-windows-virtual-machine-using-simple-defaults"></a>Skapa en virtuell Windows-dator med enkla standardinställningar
 
-Nu när allt har konfigurerats ska vi använda Azure PowerShell för att skapa resurser i Azure.
+Cmdleten `New-AzureRmVM` tillhandahåller en förenklad syntax som gör det enkelt att skapa en ny virtuell dator. Det är bara två parametervärden du måste ange: namnet på den virtuella datorn och en uppsättning autentiseringsuppgifter för det lokala administratörskontot på den virtuella datorn.
 
-Skapa först en resursgrupp. Resursgrupper i Azure ger ett sätt att hantera flera resurser som du vill gruppera logiskt. Du kan till exempel skapa en resursgrupp för ett program eller projekt och lägga till en virtuell dator, en databas och en CDN-tjänst inom den.
+Först skapar du autentiseringsobjektet.
+
+```powershell
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+```
+
+```Output
+Windows PowerShell credential request.
+Enter a username and password for the virtual machine.
+User: localAdmin
+Password for user localAdmin: *********
+```
+Sedan skapar du den virtuella datorn.
+
+```powershell
+New-AzureRmVM -Name SampleVM -Credential $cred
+```
+
+```Output
+ResourceGroupName        : SampleVM
+Id                       : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/SampleVM/providers/Microsoft.Compute/virtualMachines/SampleVM
+VmId                     : 43f6275d-ce50-49c8-a831-5d5974006e63
+Name                     : SampleVM
+Type                     : Microsoft.Compute/virtualMachines
+Location                 : eastus
+Tags                     : {}
+HardwareProfile          : {VmSize}
+NetworkProfile           : {NetworkInterfaces}
+OSProfile                : {ComputerName, AdminUsername, WindowsConfiguration, Secrets}
+ProvisioningState        : Succeeded
+StorageProfile           : {ImageReference, OsDisk, DataDisks}
+FullyQualifiedDomainName : samplevm-2c0867.eastus.cloudapp.azure.com
+```
+
+Det var enkelt. Men du kanske undrar vad det är mer som skapas och hur den virtuella datorn konfigureras. Vi kan först titta på våra resursgrupper.
+
+```powershell
+Get-AzureRmResourceGroup | Select-Object ResourceGroupName,Location
+```
+
+```Output
+ResourceGroupName          Location
+-----------------          --------
+cloud-shell-storage-westus westus
+SampleVM                   eastus
+```
+
+Resursgruppen **cloud-shell-storage-westus** skapas första gången du använder Cloud Shell. Resursgruppen **SampleVM** skapades av cmdleten `New-AzureRmVM`.
+
+Vilka andra resurser skapades i den här nya resursgruppen?
+
+```powershell
+Get-AzureRmResource |
+  Where ResourceGroupName -eq SampleVM |
+    Select-Object ResourceGroupName,Location,ResourceType,Name
+```
+
+```Output
+ResourceGroupName          Location ResourceType                            Name
+-----------------          -------- ------------                            ----
+SAMPLEVM                   eastus   Microsoft.Compute/disks                 SampleVM_OsDisk_1_9b286c54b168457fa1f8c47...
+SampleVM                   eastus   Microsoft.Compute/virtualMachines       SampleVM
+SampleVM                   eastus   Microsoft.Network/networkInterfaces     SampleVM
+SampleVM                   eastus   Microsoft.Network/networkSecurityGroups SampleVM
+SampleVM                   eastus   Microsoft.Network/publicIPAddresses     SampleVM
+SampleVM                   eastus   Microsoft.Network/virtualNetworks       SampleVM
+```
+
+Låt oss ta reda på lite mer om den virtuella datorn. De här exemplen visar hur du hämtar information om operativsystemavbildningen som används för att skapa den virtuella datorn.
+
+```powershell
+Get-AzureRmVM -Name SampleVM -ResourceGroupName SampleVM |
+  Select-Object -ExpandProperty StorageProfile |
+    Select-Object -ExpandProperty ImageReference
+```
+
+```Output
+Publisher : MicrosoftWindowsServer
+Offer     : WindowsServer
+Sku       : 2016-Datacenter
+Version   : latest
+Id        :
+```
+
+## <a name="create-a-fully-configured-linux-virtual-machine"></a>Skapa en fullständigt konfigurerad virtuell Linux-dator
+
+I det föregående exemplet användes ett förenklat syntax och parametervärdena som är standard för att skapa en virtuell Windows-dator. I det här exemplet anger vi värden för alla alternativ för den virtuella datorn.
+
+### <a name="create-a-resource-group"></a>Skapa en resursgrupp
+
+I det här exemplet vill vi skapa en resursgrupp. Resursgrupper i Azure ger ett sätt att hantera flera resurser som du vill gruppera logiskt. Du kan till exempel skapa en resursgrupp för ett program eller projekt och lägga till en virtuell dator, en databas och en CDN-tjänst inom den.
 
 Vi ska skapa en resursgrupp med namnet "MyResourceGroup" i den västeuropeiska regionen för Azure. Ange följande kommando:
 
@@ -78,101 +168,9 @@ Tags              :
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/myResourceGroup
 ```
 
-## <a name="create-a-windows-virtual-machine"></a>Skapa en virtuell Windows-dator
+Den här nya resursgruppen används för att lagra alla resurser som behövs för den nya virtuella datorn som vi skapar. För att kunna skapa en ny virtuell Linux-dator måste vi först skapa de övriga resurser som krävs och tilldela dem till en konfiguration. Vi kan sedan använda den konfigurationen för att skapa den virtuella datorn. Du behöver även ha en offentlig SSH-nyckel med namnet `id_rsa.pub` i .ssh-katalogen för din användarprofil.
 
-Nu när vi har en resursgrupp kan vi skapa en virtuell Windows-dator i den. För att kunna skapa en ny virtuell dator måste vi först skapa de övriga resurser som krävs och tilldela dem till en konfiguration. Vi kan sedan använda den konfigurationen för att skapa den virtuella datorn.
-
-### <a name="create-the-required-network-resources"></a>Skapa nätverksresurser som krävs
-
-Vi måste först skapa en undernätskonfiguration som ska användas med processen för att skapa virtuella nätverk. Vi skapar också en offentlig IP-adress så att vi kan ansluta till denna virtuella dator. Vi skapar en nätverkssäkerhetsgrupp för att säkra åtkomst till den offentliga adressen. Slutligen skapar vi ett virtuellt nätverkskort med alla föregående resurser.
-
-```powershell
-# Variables for common values
-$resourceGroup = "myResourceGroup"
-$location = "westeurope"
-$vmName = "myWindowsVM"
-
-# Create a subnet configuration
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet1 -AddressPrefix 192.168.1.0/24
-
-# Create a virtual network
-$vnet = New-AzureRmVirtualNetwork -ResourceGroupName $resourceGroup -Location $location `
-  -Name MYvNET1 -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
-
-# Create a public IP address and specify a DNS name
-$publicIp = New-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup -Location $location `
-  -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
-$publicIp | Select-Object Name,IpAddress
-
-# Create an inbound network security group rule for port 3389
-$nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
-  -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
-  -DestinationPortRange 3389 -Access Allow
-
-# Create a network security group
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
-  -Name myNetworkSecurityGroup1 -SecurityRules $nsgRuleRDP
-
-# Create a virtual network card and associate with public IP address and NSG
-$nic = New-AzureRmNetworkInterface -Name myNic1 -ResourceGroupName $resourceGroup -Location $location `
-  -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $publicIp.Id -NetworkSecurityGroupId $nsg.Id
-```
-
-### <a name="create-the-virtual-machine"></a>Skapa den virtuella datorn
-
-Vi måste först ha en uppsättning autentiseringsuppgifter för operativsystemet.
-
-```powershell
-# Create user object
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
-```
-
-Nu när vi har de nödvändiga resurserna kan vi skapa den virtuella datorn. För detta steg skapar vi ett VM-konfigurationsobjekt och sedan använder vi konfigurationen för att skapa den virtuella datorn.
-
-```powershell
-# Create a virtual machine configuration
-$vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D1 |
-  Set-AzureRmVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred |
-  Set-AzureRmVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2016-Datacenter -Version latest |
-  Add-AzureRmVMNetworkInterface -Id $nic.Id
-
-# Create a virtual machine
-New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
-```
-
-Kommandot `New-AzureRmVM` ger resultat när den virtuella datorn har skapats färdigt och är redo att användas.
-
-```Output
-RequestId IsSuccessStatusCode StatusCode ReasonPhrase
---------- ------------------- ---------- ------------
-                         True         OK OK
-```
-
-Logga nu in på den virtuella Windows Server-dator som har skapats med hjälp av Fjärrskrivbord och den virtuella datorns offentliga IP-adress. Följande kommando visar den offentliga IP-adress som skapades i föregående skript.
-
-```powershell
-$publicIp | Select-Object Name,IpAddress
-```
-
-```Output
-Name                  IpAddress
-----                  ---------
-mypublicdns1400512543 xx.xx.xx.xx
-```
-
-Om du använder ett Windows-baserat system kan du göra detta från kommandoraden med mstsc-kommandot:
-
-```powershell
-mstsc /v:xx.xxx.xx.xxx
-```
-
-Ange samma kombination av användarnamn/lösenord för att logga in som du använde när du skapade den virtuella datorn.
-
-## <a name="create-a-linux-virtual-machine"></a>Skapa en virtuell Linux-dator
-
-För att kunna skapa en ny virtuell Linux-dator måste vi först skapa de övriga resurser som krävs och tilldela dem till en konfiguration. Vi kan sedan använda den konfigurationen för att skapa den virtuella datorn. Detta förutsätter att du redan har skapat resursgruppen på det sätt som visats tidigare. Du behöver även ha en offentlig SSH-nyckel med namnet `id_rsa.pub` i .ssh-katalogen för din användarprofil.
-
-### <a name="create-the-required-network-resources"></a>Skapa nätverksresurser som krävs
+#### <a name="create-the-required-network-resources"></a>Skapa nätverksresurser som krävs
 
 Vi måste först skapa en undernätskonfiguration som ska användas med processen för att skapa virtuella nätverk. Vi skapar också en offentlig IP-adress så att vi kan ansluta till denna virtuella dator. Vi skapar en nätverkssäkerhetsgrupp för att säkra åtkomst till den offentliga adressen. Slutligen skapar vi ett virtuellt nätverkskort med alla föregående resurser.
 
@@ -183,7 +181,7 @@ $location = "westeurope"
 $vmName = "myLinuxVM"
 
 # Definer user name and blank password
-$securePassword = ConvertTo-SecureString ' ' -AsPlainText -Force
+$securePassword = ConvertTo-SecureString 'azurepassword' -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ("azureuser", $securePassword)
 
 # Create a subnet configuration
@@ -212,9 +210,9 @@ $nic = New-AzureRmNetworkInterface -Name myNic2 -ResourceGroupName $resourceGrou
   -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $publicIp.Id -NetworkSecurityGroupId $nsg.Id
 ```
 
-### <a name="create-the-virtual-machine"></a>Skapa den virtuella datorn
+### <a name="create-the-vm-configuration"></a>Skapa VM-konfigurationen
 
-Nu när vi har de nödvändiga resurserna kan vi skapa den virtuella datorn. För detta steg skapar vi ett VM-konfigurationsobjekt och sedan använder vi konfigurationen för att skapa den virtuella datorn.
+Nu när vi har de nödvändiga resurserna kan vi skapa VM-konfigurationsobjektet.
 
 ```powershell
 # Create a virtual machine configuration
@@ -226,8 +224,13 @@ $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D1 |
 # Configure SSH Keys
 $sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
 Add-AzureRmVMSshPublicKey -VM $vmConfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
+```
 
-# Create a virtual machine
+### <a name="create-the-virtual-machine"></a>Skapa den virtuella datorn
+
+Vi kan nu skapa den virtuella datorn med VM-konfigurationsobjektet.
+
+```powershell
 New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
@@ -367,7 +370,7 @@ Om du vill lära dig mer om att använda Azure PowerShell kan du ta en titt på 
 * [Logga in med Azure PowerShell](authenticate-azureps.md)
 * [Hantera Azure-prenumerationer med Azure PowerShell](manage-subscriptions-azureps.md)
 * [Skapa tjänstens huvudnamn i Azure med Azure PowerShell](create-azure-service-principal-azureps.md)
-* Läs den viktiga informationen om att migrera från en äldre version: [https://github.com/Azure/azure-powershell/tree/dev/documentation/release-notes](https://github.com/Azure/azure-powershell/tree/dev/documentation/release-notes).
+* Läs den viktiga informationen om hur du migrerar från en äldre version: [ https://github.com/Azure/azure-powershell/tree/dev/documentation/release-notes ](https://github.com/Azure/azure-powershell/tree/dev/documentation/release-notes).
 * Få hjälp från communityn:
   * [Azure-forumet på MSDN](http://go.microsoft.com/fwlink/p/?LinkId=320212)
   * [stackoverflow](http://go.microsoft.com/fwlink/?LinkId=320213)
